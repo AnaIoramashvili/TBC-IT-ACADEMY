@@ -17,132 +17,113 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coffe" translatesAutoresizingMaskIntoConstraints="NO" id="w52-Xj-7yB">
-                                <rect key="frame" x="30" y="73" width="333" height="223"/>
+                                <rect key="frame" x="30" y="73" width="333" height="226"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="315" id="Ldm-QQ-qtM"/>
-                                    <constraint firstAttribute="height" constant="226" id="plS-vz-bK5"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="226" id="cTE-cP-9zv"/>
+                                    <constraint firstAttribute="height" constant="226" id="yT2-ba-b5e"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="xJI-7r-FI4">
-                                <rect key="frame" x="39" y="304" width="109.33333333333331" height="60"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="xJI-7r-FI4">
+                                <rect key="frame" x="30" y="329.66666666666669" width="91" height="49.333333333333314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="კაპუჩინო" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hE0-dj-G54">
-                                        <rect key="frame" x="0.0" y="0.0" width="109.33333333333333" height="28.666666666666668"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="91" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="შოკოლადით" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITi-G3-Gum">
-                                        <rect key="frame" x="0.0" y="39.666666666666664" width="109.33333333333333" height="20.333333333333336"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="20.333333333333336" id="jRS-oN-xZa"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="35" width="91" height="14.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" red="0.60784316059999999" green="0.60784316059999999" blue="0.60784316059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="ITi-G3-Gum" firstAttribute="top" secondItem="hE0-dj-G54" secondAttribute="bottom" constant="11" id="tWU-ox-QXF"/>
+                                </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="suit.heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zsQ-Ty-ynn">
-                                <rect key="frame" x="330" y="387" width="33" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="suit.heart" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zsQ-Ty-ynn">
+                                <rect key="frame" x="320" y="374" width="43" height="30"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="K3X-T9-LsW"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="Tl0-bX-gT4"/>
+                                    <constraint firstAttribute="width" constant="43" id="jtM-47-RjI"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbb-Nh-HGB">
-                                <rect key="frame" x="39" y="471" width="315" height="131"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sft-rS-qBn">
+                                <rect key="frame" x="46" y="429" width="301" height="2"/>
+                                <color key="backgroundColor" red="0.91764706370000004" green="0.91764706370000004" blue="0.91764706370000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.20000000000000001"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="s49-hm-3TQ"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbb-Nh-HGB">
+                                <rect key="frame" x="30" y="485.66666666666669" width="333" height="81.333333333333314"/>
                                 <string key="text">მოცემული კაპუჩინო არის დაახლოებით 150 მლ. ის შეიცავს 25 მლ. ესპრესოს ყავას, 85 მლ. ახალთახალი მოწველილი ძროხის რძის რძეს, რომელიც სპეც...</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" systemColor="systemGray2Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ზომა" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALW-Bc-Zeh">
-                                <rect key="frame" x="39" y="609.66666666666652" width="42" height="20.333333333333371"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ზომა" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALW-Bc-Zeh">
+                                <rect key="frame" x="30" y="586.66666666666663" width="42" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJC-a3-m8e">
-                                <rect key="frame" x="35" y="651" width="96" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="პაწა">
-                                    <backgroundConfiguration key="background" cornerRadius="12">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" red="0.60784316059999999" green="0.60784316059999999" blue="0.60784316059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfb-Y7-4ic">
-                                <rect key="frame" x="147" y="651" width="99.666666666666686" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="საშუალო">
-                                    <backgroundConfiguration key="background" cornerRadius="12">
-                                        <color key="backgroundColor" red="0.99215686319999996" green="0.96078431610000004" blue="0.93725490570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <color key="strokeColor" red="0.73725497719999999" green="0.50196081400000003" blue="0.33725491169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" red="0.73333334920000004" green="0.50196081400000003" blue="0.34117650989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOA-a8-rir">
-                                <rect key="frame" x="258" y="651" width="96" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="დიდი">
-                                    <backgroundConfiguration key="background" cornerRadius="12">
-                                        <color key="strokeColor" red="0.60784316059999999" green="0.60784316059999999" blue="0.60784316059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </backgroundConfiguration>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mng-lo-tPp">
-                                <rect key="frame" x="0.0" y="711" width="393" height="124.33333333333337"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="cBn-NU-3PD">
+                                <rect key="frame" x="30" y="625.66666666666663" width="337" height="34.333333333333371"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U80-i6-2Ei">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="124.33333333333333"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgG-P6-Atu">
-                                                <rect key="frame" x="148" y="23" width="217" height="64"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="ყიდვა">
-                                                    <backgroundConfiguration key="background" cornerRadius="16">
-                                                        <color key="backgroundColor" red="0.73725497719999999" green="0.49803921579999999" blue="0.33725491169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                        <color key="strokeColor" red="0.73725497719999999" green="0.49803921579999999" blue="0.33725491169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </backgroundConfiguration>
-                                                </buttonConfiguration>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ფასი" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTB-jb-AWT">
-                                                <rect key="frame" x="44" y="30" width="34" height="17"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <color key="textColor" red="0.60784316059999999" green="0.60784316059999999" blue="0.60784316059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="₾ 4.53" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUC-l0-RAJ">
-                                                <rect key="frame" x="43.999999999999993" y="55.000000000000007" width="69.333333333333314" height="26.333333333333336"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                                <color key="textColor" red="0.73725497719999999" green="0.49803921579999999" blue="0.33725491169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJC-a3-m8e">
+                                        <rect key="frame" x="0.0" y="0.0" width="99.666666666666671" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="პაწა">
+                                            <backgroundConfiguration key="background" cornerRadius="12">
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="strokeColor" red="0.60784316059999999" green="0.60784316059999999" blue="0.60784316059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dfb-Y7-4ic">
+                                        <rect key="frame" x="118.66666666666666" y="0.0" width="99.666666666666657" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="საშუალო">
+                                            <backgroundConfiguration key="background" cornerRadius="12">
+                                                <color key="backgroundColor" red="0.99215686319999996" green="0.96078431610000004" blue="0.93725490570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="strokeColor" red="0.73725497719999999" green="0.50196081400000003" blue="0.33725491169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <color key="baseForegroundColor" red="0.73333334920000004" green="0.50196081400000003" blue="0.34117650989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOA-a8-rir">
+                                        <rect key="frame" x="237.33333333333329" y="0.0" width="99.666666666666657" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="დიდი">
+                                            <backgroundConfiguration key="background" cornerRadius="12">
+                                                <color key="strokeColor" red="0.60784316059999999" green="0.60784316059999999" blue="0.60784316059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </backgroundConfiguration>
+                                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </buttonConfiguration>
+                                    </button>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sft-rS-qBn">
-                                <rect key="frame" x="39" y="429" width="315" height="2"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.91764706370000004" green="0.91764706370000004" blue="0.91764706370000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.20000000000000001"/>
-                            </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OmQ-Un-dPt">
-                                <rect key="frame" x="39" y="378.66666666666663" width="101.66666666666669" height="25.333333333333314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="აღწერა" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3I-c1-oy6">
+                                <rect key="frame" x="30" y="451" width="62" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="₾ 4.53" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUC-l0-RAJ">
+                                <rect key="frame" x="29.999999999999993" y="743.66666666666663" width="69.333333333333314" height="26.333333333333371"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" red="0.73725497719999999" green="0.49803921579999999" blue="0.33725491169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="OmQ-Un-dPt">
+                                <rect key="frame" x="30.000000000000007" y="390" width="101.66666666666669" height="25.333333333333314"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="K7u-ur-plE">
                                         <rect key="frame" x="0.0" y="-0.33333333333333215" width="22" height="24.999999999999996"/>
@@ -162,11 +143,25 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="აღწერა" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3I-c1-oy6">
-                                <rect key="frame" x="39" y="442" width="62" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgG-P6-Atu">
+                                <rect key="frame" x="145" y="712" width="218" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="218" id="2eU-V2-01T"/>
+                                    <constraint firstAttribute="height" constant="65" id="hcy-bi-jpr"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="ყიდვა">
+                                    <backgroundConfiguration key="background" cornerRadius="16">
+                                        <color key="backgroundColor" red="0.73725497719999999" green="0.49803921579999999" blue="0.33725491169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="strokeColor" red="0.73725497719999999" green="0.49803921579999999" blue="0.33725491169999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                </buttonConfiguration>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ფასი" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTB-jb-AWT">
+                                <rect key="frame" x="30" y="718" width="34" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.60784316059999999" green="0.60784316059999999" blue="0.60784316059999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -174,30 +169,57 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <rect key="contentStretch" x="0.0" y="0.0" width="0.59999999999999998" height="0.65000000000000002"/>
                         <constraints>
-                            <constraint firstItem="w52-Xj-7yB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="9Z0-Po-I8T"/>
-                            <constraint firstItem="w52-Xj-7yB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="B8G-q5-MjT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="w52-Xj-7yB" secondAttribute="bottom" constant="528" id="TnV-gx-5rr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="w52-Xj-7yB" secondAttribute="trailing" constant="30" id="ZHL-rQ-1D2"/>
+                            <constraint firstItem="ALW-Bc-Zeh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="1uv-LZ-VcE"/>
+                            <constraint firstItem="xJI-7r-FI4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="2AK-sy-RaV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="WUC-l0-RAJ" secondAttribute="bottom" constant="48" id="7A4-ch-o2k"/>
+                            <constraint firstItem="xJI-7r-FI4" firstAttribute="top" secondItem="w52-Xj-7yB" secondAttribute="bottom" constant="30.670000000000002" id="7JP-QG-Acx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zsQ-Ty-ynn" secondAttribute="trailing" constant="30" id="7zS-d9-xef"/>
+                            <constraint firstItem="sft-rS-qBn" firstAttribute="top" secondItem="OmQ-Un-dPt" secondAttribute="bottom" constant="13.67" id="8sg-8b-EYB"/>
+                            <constraint firstItem="sft-rS-qBn" firstAttribute="top" secondItem="zsQ-Ty-ynn" secondAttribute="bottom" constant="24" id="BJw-fA-yt1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="a3I-c1-oy6" secondAttribute="trailing" symbolic="YES" id="BLj-b9-XIt"/>
+                            <constraint firstItem="a3I-c1-oy6" firstAttribute="top" secondItem="sft-rS-qBn" secondAttribute="bottom" constant="20" id="Cxi-nd-CrL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HgG-P6-Atu" secondAttribute="trailing" constant="30" id="E0b-Dn-mJF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cBn-NU-3PD" secondAttribute="trailing" constant="26" id="IV7-Vd-4SP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rbb-Nh-HGB" secondAttribute="trailing" constant="30" id="IsJ-jm-yl0"/>
+                            <constraint firstItem="HgG-P6-Atu" firstAttribute="top" secondItem="cBn-NU-3PD" secondAttribute="bottom" constant="52" id="J0f-sz-9nH"/>
+                            <constraint firstItem="HgG-P6-Atu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yTB-jb-AWT" secondAttribute="trailing" constant="8" symbolic="YES" id="MZ1-1e-Sc7"/>
+                            <constraint firstItem="w52-Xj-7yB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="QXi-Gx-Bmg"/>
+                            <constraint firstItem="sft-rS-qBn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="TtD-lR-OwI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HgG-P6-Atu" secondAttribute="bottom" constant="41" id="U20-CT-kB6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="w52-Xj-7yB" secondAttribute="trailing" constant="30" id="W4Y-ht-7Fb"/>
+                            <constraint firstItem="a3I-c1-oy6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="X2A-FI-PlS"/>
+                            <constraint firstItem="cBn-NU-3PD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="YY9-Wg-HoI"/>
+                            <constraint firstItem="yTB-jb-AWT" firstAttribute="top" secondItem="cBn-NU-3PD" secondAttribute="bottom" constant="58" id="YeG-Jo-DaC"/>
+                            <constraint firstItem="HgG-P6-Atu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WUC-l0-RAJ" secondAttribute="trailing" constant="8" symbolic="YES" id="Zhy-H5-uV2"/>
+                            <constraint firstItem="WUC-l0-RAJ" firstAttribute="top" secondItem="yTB-jb-AWT" secondAttribute="bottom" constant="8.6666666666666288" id="aHK-qC-pDg"/>
+                            <constraint firstItem="OmQ-Un-dPt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="bYy-Ev-YRC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sft-rS-qBn" secondAttribute="trailing" constant="30" id="dVM-Yi-F3R"/>
+                            <constraint firstItem="WUC-l0-RAJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="dlG-2Y-ciY"/>
+                            <constraint firstItem="yTB-jb-AWT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="gn6-vo-GUA"/>
+                            <constraint firstItem="rbb-Nh-HGB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="icp-33-bfX"/>
+                            <constraint firstItem="cBn-NU-3PD" firstAttribute="top" secondItem="ALW-Bc-Zeh" secondAttribute="bottom" constant="18.670000000000002" id="jOT-k6-TUh"/>
+                            <constraint firstItem="ALW-Bc-Zeh" firstAttribute="top" secondItem="rbb-Nh-HGB" secondAttribute="bottom" constant="19.670000000000002" id="mWy-NK-eo3"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ALW-Bc-Zeh" secondAttribute="trailing" symbolic="YES" id="ouE-Zc-Upd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HgG-P6-Atu" secondAttribute="trailing" constant="30" id="pca-3t-OIf"/>
+                            <constraint firstItem="OmQ-Un-dPt" firstAttribute="top" secondItem="xJI-7r-FI4" secondAttribute="bottom" constant="11" id="vlE-5O-KqJ"/>
+                            <constraint firstItem="w52-Xj-7yB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="w2N-0H-Ohb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HgG-P6-Atu" secondAttribute="bottom" constant="41" id="wIx-gt-TAa"/>
+                            <constraint firstItem="rbb-Nh-HGB" firstAttribute="top" secondItem="a3I-c1-oy6" secondAttribute="bottom" constant="14.33" id="wva-S5-GrZ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="Big" destination="mOA-a8-rir" id="Y0s-9C-hbk"/>
-                        <outlet property="But" destination="HgG-P6-Atu" id="PoL-rR-TH0"/>
-                        <outlet property="CoffeName" destination="ITi-G3-Gum" id="cQd-fO-iMp"/>
-                        <outlet property="Description" destination="a3I-c1-oy6" id="rRy-BU-RPc"/>
-                        <outlet property="DescriptionLabel" destination="a3I-c1-oy6" id="NET-uJ-Ke3"/>
-                        <outlet property="HeartImage" destination="zsQ-Ty-ynn" id="HGs-Ae-egJ"/>
-                        <outlet property="HeartSymbol" destination="zsQ-Ty-ynn" id="AGt-64-UZN"/>
-                        <outlet property="Image" destination="w52-Xj-7yB" id="XC7-Yg-Rvh"/>
-                        <outlet property="Label1" destination="hE0-dj-G54" id="yX8-Fg-0Au"/>
-                        <outlet property="Label2" destination="ITi-G3-Gum" id="xA4-J7-TQL"/>
-                        <outlet property="Label3" destination="GEG-qw-WmC" id="fvN-64-3e1"/>
-                        <outlet property="Line" destination="8bC-Xf-vdC" id="j9x-So-ZUn"/>
-                        <outlet property="Middle" destination="Dfb-Y7-4ic" id="5RS-ar-LZS"/>
-                        <outlet property="Rating" destination="OmQ-Un-dPt" id="VQR-0V-810"/>
-                        <outlet property="SizeLabel" destination="ALW-Bc-Zeh" id="1aC-E8-xvv"/>
-                        <outlet property="Small" destination="hJC-a3-m8e" id="JQN-6P-hif"/>
-                        <outlet property="StarSymbol" destination="K7u-ur-plE" id="PTa-Jb-ZF4"/>
+                        <outlet property="buyButton" destination="HgG-P6-Atu" id="QNh-LU-FAN"/>
+                        <outlet property="coffeeNameLabel" destination="hE0-dj-G54" id="HKW-Dm-ORH"/>
+                        <outlet property="descriptionLabel" destination="a3I-c1-oy6" id="9pL-k3-1Rv"/>
+                        <outlet property="heartImageView" destination="zsQ-Ty-ynn" id="sGe-0f-ILP"/>
+                        <outlet property="imageView" destination="w52-Xj-7yB" id="jqO-Jv-KNH"/>
+                        <outlet property="lineView" destination="sft-rS-qBn" id="2YB-vW-TjP"/>
+                        <outlet property="priceAmountLabel" destination="WUC-l0-RAJ" id="Jju-gr-vKK"/>
+                        <outlet property="priceLabel" destination="yTB-jb-AWT" id="4Vh-lT-mZm"/>
+                        <outlet property="ratingStackView" destination="xJI-7r-FI4" id="Jvn-YV-W94"/>
+                        <outlet property="sizeLabel" destination="ALW-Bc-Zeh" id="aP0-fa-Fbg"/>
+                        <outlet property="sizeStackView" destination="cBn-NU-3PD" id="dWf-a6-vBO"/>
+                        <outlet property="textLabel" destination="rbb-Nh-HGB" id="BlT-QS-E8H"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -209,9 +231,6 @@
         <image name="coffe" width="1770" height="1180"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="suit.heart" catalog="system" width="128" height="107"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
