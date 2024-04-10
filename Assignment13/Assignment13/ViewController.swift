@@ -294,6 +294,7 @@ class ViewController: UIViewController {
             buttonStackView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 20),
             buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            buttonStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -28)
         ])
     }
     
@@ -328,7 +329,7 @@ class ViewController: UIViewController {
     
     func checkEmailForMe(_ email: String) -> Bool {
         let isCorrectPattern = email.contains("@") && email.contains(".") && !email.contains(" ")
-        let hasValidSuffix = email.hasSuffix(".com") || email.hasSuffix(".ru")
+        let hasValidSuffix = email.hasSuffix(".com") || email.hasSuffix(".ge")
         
         return isCorrectPattern && hasValidSuffix
     }
