@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5939714E2BC757A30004BEE3 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5939714D2BC757A30004BEE3 /* ThirdViewController.swift */; };
 		595F36D62BC7377000202F81 /* ZodiacSignsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595F36D52BC7376F00202F81 /* ZodiacSignsInfo.swift */; };
 		59A176512BC706C600C20410 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A176502BC706C600C20410 /* AppDelegate.swift */; };
 		59A176532BC706C600C20410 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A176522BC706C600C20410 /* SceneDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5939714D2BC757A30004BEE3 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		595F36D52BC7376F00202F81 /* ZodiacSignsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZodiacSignsInfo.swift; sourceTree = "<group>"; };
 		59A1764D2BC706C600C20410 /* Assignment14.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment14.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59A176502BC706C600C20410 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			children = (
 				59A176542BC706C600C20410 /* ViewController.swift */,
 				59A176652BC7075B00C20410 /* SecondViewController.swift */,
+				5939714D2BC757A30004BEE3 /* ThirdViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -152,6 +155,7 @@
 				595F36D62BC7377000202F81 /* ZodiacSignsInfo.swift in Sources */,
 				59A176552BC706C600C20410 /* ViewController.swift in Sources */,
 				59A176512BC706C600C20410 /* AppDelegate.swift in Sources */,
+				5939714E2BC757A30004BEE3 /* ThirdViewController.swift in Sources */,
 				59A176532BC706C600C20410 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

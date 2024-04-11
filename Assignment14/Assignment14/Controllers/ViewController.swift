@@ -91,7 +91,7 @@ class MainViewController: UIViewController {
         button.backgroundColor = .purple
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        button.addTarget(self, action: #selector(pushPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(goToSecondPage), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -139,7 +139,7 @@ class MainViewController: UIViewController {
     }
     
 
-    @objc func pushPressed() {
+    @objc func goToSecondPage() {
         guard let searchZodiacSign = textField.text, !searchZodiacSign.isEmpty else {
             textField.layer.borderColor = UIColor.red.cgColor
             textField.layer.borderWidth = 1.0

@@ -53,6 +53,7 @@ class SecondViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.layer.cornerRadius = 12
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(goToThirdPage), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -101,6 +102,14 @@ class SecondViewController: UIViewController {
 
         ])
         
+        
+        
     }
+    
+    @objc func goToThirdPage() {
+        let thirdViewController = ThirdViewController()
+        navigationController?.pushViewController(thirdViewController, animated: true)
+    }
+
     
 }
