@@ -184,7 +184,7 @@ class ViewController: UIViewController {
         button.setImage(googleSymbol, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.tintColor = .black
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 15)
+//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 15)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -201,7 +201,7 @@ class ViewController: UIViewController {
         button.setImage(fbSymbol, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.tintColor = .black
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 15)
+//        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 15)
 
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

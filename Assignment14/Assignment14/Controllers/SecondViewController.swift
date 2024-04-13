@@ -39,7 +39,7 @@ class SecondViewController: UIViewController {
     lazy var zodiacText: UITextView = {
         let zodiacText = UITextView()
         zodiacText.text = ""
-        zodiacText.font = .systemFont(ofSize: 14)
+        zodiacText.font = .systemFont(ofSize: 20)
         zodiacText.textColor = .lightGray
         zodiacText.backgroundColor = .clear
         zodiacText.translatesAutoresizingMaskIntoConstraints = false
