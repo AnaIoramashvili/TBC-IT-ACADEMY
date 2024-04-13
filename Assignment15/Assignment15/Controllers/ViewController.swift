@@ -47,9 +47,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let arrowButton = UIButton(type: .custom)
         arrowButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
         arrowButton.tintColor = .lightGray
-        arrowButton.frame = CGRect(x: self.view.frame.width - 40, y: 40, width: 20, height: 20)
+        arrowButton.frame = CGRect(x: headerView.bounds.width - 40, y: 40, width: 20, height: 20)
+        arrowButton.addTarget(self, action: #selector(arrowButtonTapped), for: .touchUpInside)
         headerView.addSubview(arrowButton)
-        
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(headerViewTapped))
+        headerView.addGestureRecognizer(tapGesture)
         return headerView
     }()
     
@@ -138,6 +141,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let contactInfoViewController = ContactInfoViewController()
         contactInfoViewController.student = selectedStudent
         
+        navigationController?.pushViewController(contactInfoViewController, animated: true)
+    }
+    
+    // MARK: AddButtons
+    
+    @objc func headerViewTapped() {
+        let contactInfoViewController = ContactInfoViewController()
+        navigationController?.pushViewController(contactInfoViewController, animated: true)
+    }
+    
+    @objc func arrowButtonTapped() {
+        let contactInfoViewController = ContactInfoViewController()
         navigationController?.pushViewController(contactInfoViewController, animated: true)
     }
 
