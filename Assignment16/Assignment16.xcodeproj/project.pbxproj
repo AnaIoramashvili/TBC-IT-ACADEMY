@@ -9,25 +9,27 @@
 /* Begin PBXBuildFile section */
 		594B61AF2BCC0E2A00EDC36E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B61AE2BCC0E2A00EDC36E /* AppDelegate.swift */; };
 		594B61B12BCC0E2A00EDC36E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B61B02BCC0E2A00EDC36E /* SceneDelegate.swift */; };
-		594B61B32BCC0E2A00EDC36E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B61B22BCC0E2A00EDC36E /* ViewController.swift */; };
+		594B61B32BCC0E2A00EDC36E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B61B22BCC0E2A00EDC36E /* MainViewController.swift */; };
 		594B61B82BCC0E2B00EDC36E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 594B61B72BCC0E2B00EDC36E /* Assets.xcassets */; };
 		594B61BB2BCC0E2B00EDC36E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 594B61B92BCC0E2B00EDC36E /* LaunchScreen.storyboard */; };
 		594B61C42BCC125500EDC36E /* FiraGO-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 594B61C22BCC125500EDC36E /* FiraGO-Bold.ttf */; };
 		594B61C52BCC125500EDC36E /* FiraGO-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 594B61C32BCC125500EDC36E /* FiraGO-Regular.ttf */; };
 		594B61C92BCC178A00EDC36E /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B61C82BCC178A00EDC36E /* OnBoardingViewController.swift */; };
+		594B61CB2BCC3E0300EDC36E /* AddNewCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B61CA2BCC3E0300EDC36E /* AddNewCardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		594B61AB2BCC0E2A00EDC36E /* Assignment16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment16.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		594B61AE2BCC0E2A00EDC36E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		594B61B02BCC0E2A00EDC36E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		594B61B22BCC0E2A00EDC36E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		594B61B22BCC0E2A00EDC36E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		594B61B72BCC0E2B00EDC36E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		594B61BA2BCC0E2B00EDC36E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		594B61BC2BCC0E2B00EDC36E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		594B61C22BCC125500EDC36E /* FiraGO-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraGO-Bold.ttf"; sourceTree = "<group>"; };
 		594B61C32BCC125500EDC36E /* FiraGO-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraGO-Regular.ttf"; sourceTree = "<group>"; };
 		594B61C82BCC178A00EDC36E /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		594B61CA2BCC3E0300EDC36E /* AddNewCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,23 +63,11 @@
 		594B61AD2BCC0E2A00EDC36E /* Assignment16 */ = {
 			isa = PBXGroup;
 			children = (
-				594B61AE2BCC0E2A00EDC36E /* AppDelegate.swift */,
-				594B61B02BCC0E2A00EDC36E /* SceneDelegate.swift */,
-				594B61C62BCC159A00EDC36E /* Controllers */,
-				594B61B72BCC0E2B00EDC36E /* Assets.xcassets */,
-				594B61B92BCC0E2B00EDC36E /* LaunchScreen.storyboard */,
-				594B61BC2BCC0E2B00EDC36E /* Info.plist */,
+				594B61D12BCC550600EDC36E /* App */,
+				594B61D02BCC53D000EDC36E /* Scenes */,
+				594B61D52BCC57F700EDC36E /* Resources */,
 			);
 			path = Assignment16;
-			sourceTree = "<group>";
-		};
-		594B61C62BCC159A00EDC36E /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				594B61C82BCC178A00EDC36E /* OnBoardingViewController.swift */,
-				594B61B22BCC0E2A00EDC36E /* ViewController.swift */,
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		594B61C72BCC15B200EDC36E /* Font */ = {
@@ -87,6 +77,51 @@
 				594B61C22BCC125500EDC36E /* FiraGO-Bold.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		594B61D02BCC53D000EDC36E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				594B61D22BCC552B00EDC36E /* ViewControllers */,
+				594B61D32BCC553A00EDC36E /* Launch */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		594B61D12BCC550600EDC36E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				594B61AE2BCC0E2A00EDC36E /* AppDelegate.swift */,
+				594B61B02BCC0E2A00EDC36E /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		594B61D22BCC552B00EDC36E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				594B61C82BCC178A00EDC36E /* OnBoardingViewController.swift */,
+				594B61B22BCC0E2A00EDC36E /* MainViewController.swift */,
+				594B61CA2BCC3E0300EDC36E /* AddNewCardViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		594B61D32BCC553A00EDC36E /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				594B61B92BCC0E2B00EDC36E /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		594B61D52BCC57F700EDC36E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				594B61BC2BCC0E2B00EDC36E /* Info.plist */,
+				594B61B72BCC0E2B00EDC36E /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,7 +196,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				594B61B32BCC0E2A00EDC36E /* ViewController.swift in Sources */,
+				594B61CB2BCC3E0300EDC36E /* AddNewCardViewController.swift in Sources */,
+				594B61B32BCC0E2A00EDC36E /* MainViewController.swift in Sources */,
 				594B61AF2BCC0E2A00EDC36E /* AppDelegate.swift in Sources */,
 				594B61B12BCC0E2A00EDC36E /* SceneDelegate.swift in Sources */,
 				594B61C92BCC178A00EDC36E /* OnBoardingViewController.swift in Sources */,
@@ -304,7 +340,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Assignment16/Info.plist;
+				INFOPLIST_FILE = Assignment16/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -330,7 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Assignment16/Info.plist;
+				INFOPLIST_FILE = Assignment16/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

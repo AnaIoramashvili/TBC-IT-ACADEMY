@@ -32,7 +32,7 @@ class ContactInfoViewController: UIViewController, UITableViewDataSource, UITabl
     
     lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.layer.cornerRadius = 75
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -72,14 +72,15 @@ class ContactInfoViewController: UIViewController, UITableViewDataSource, UITabl
         
         NSLayoutConstraint.activate([
             iconImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            iconImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            iconImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            iconImageView.heightAnchor.constraint(equalToConstant: 150)
+            iconImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            iconImageView.heightAnchor.constraint(equalToConstant: 150),
+            iconImageView.widthAnchor.constraint(equalToConstant: 150)
         ])
         
         if let studentIcon = student?.icon {
             iconImageView.image = studentIcon
         }
+
     }
     
     func setUpFullNameLabel() {
