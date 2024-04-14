@@ -12,6 +12,13 @@ class ContactInfoViewController: UIViewController, UITableViewDataSource, UITabl
     
     var student: StudentData?
     
+    lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .darkGray
+        return view
+    }()
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +33,7 @@ class ContactInfoViewController: UIViewController, UITableViewDataSource, UITabl
     lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -42,19 +50,31 @@ class ContactInfoViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         view.backgroundColor = .lightGray
         
+        setUpContentView()
         setUpIconImageView()
         setUpTableView()
         setUpFullNameLabel()
     }
     
+    func setUpContentView() {
+        view.addSubview(contentView)
+        
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: view.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            contentView.heightAnchor.constraint(equalToConstant: 380)
+        ])
+    }
+    
     func setUpIconImageView() {
-        view.addSubview(iconImageView)
+        contentView.addSubview(iconImageView)
         
         NSLayoutConstraint.activate([
             iconImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             iconImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             iconImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            iconImageView.heightAnchor.constraint(equalToConstant: 300)
+            iconImageView.heightAnchor.constraint(equalToConstant: 150)
         ])
         
         if let studentIcon = student?.icon {
@@ -63,13 +83,12 @@ class ContactInfoViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func setUpFullNameLabel() {
-        view.addSubview(fullNameLabel)
+        contentView.addSubview(fullNameLabel)
         
         NSLayoutConstraint.activate([
-            fullNameLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 10),
+            fullNameLabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 20),
             fullNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             fullNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            fullNameLabel.bottomAnchor.constraint(equalTo: tableView.topAnchor, constant: 10)
         ])
         
         if let fullName = student?.fullName {
@@ -80,13 +99,14 @@ class ContactInfoViewController: UIViewController, UITableViewDataSource, UITabl
         
     }
     
+    
     func setUpTableView() {
         view.addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 60),
+            tableView.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 100),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
