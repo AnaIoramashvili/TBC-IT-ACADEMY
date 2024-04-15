@@ -7,17 +7,14 @@
 
 import UIKit
 
+// MARK: - ReceiveDataDelegate
+
 protocol ReceiveDataDelegate {
     func receive(post: PostInfoModel)
 }
 
 class MainViewController: UIViewController, ReceiveDataDelegate {
-    
-    func receive(post: PostInfoModel) {
-        posts.append(post)
-        collectionView.reloadData()
-    }
-    
+        
     lazy var backgroundView: UIImageView = {
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "DefaultBackground")
@@ -50,45 +47,59 @@ class MainViewController: UIViewController, ReceiveDataDelegate {
         return addButton
     }()
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
         setupCollectionView()
     }
     
+    // MARK: - Layout
+    
     func layout() {
         view.addSubview(backgroundView)
         view.addSubview(collectionView)
         view.addSubview(addButton)
 
-        
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 77),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 33),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             collectionView.heightAnchor.constraint(equalToConstant: 448),
             
-            addButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 660),
+            addButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 135),
             addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -42),
             addButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 43),
+            addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70),
             addButton.heightAnchor.constraint(equalToConstant: 48),
         ])
-
     }
     
+    // MARK: - Actions
+
     @objc func addNewCard() {
         let addNewCardViewController = AddNewCardViewController()
         addNewCardViewController.delegate = self
         navigationController?.pushViewController(addNewCardViewController, animated: true)
     }
     
-    
+    // MARK: - Setup CollectionView
+
     func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
+    
+    // MARK: - ReceiveDataDelegate
 
+    func receive(post: PostInfoModel) {
+        posts.append(post)
+        collectionView.reloadData()
+    }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -107,9 +118,6 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         return CGSize(width: view.frame.width / 2 - 32, height: 192)
     }
 }
-
-//extension MainViewController: UICollectionViewDelegate {
-//}
 
 
 

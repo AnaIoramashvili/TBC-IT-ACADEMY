@@ -10,6 +10,8 @@ import UIKit
 
 class OnBoardingViewController: UIViewController {
     
+    // MARK: - Properties
+    
     lazy var backgroundView: UIImageView = {
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "SecondPageBackground")
@@ -43,28 +45,34 @@ class OnBoardingViewController: UIViewController {
         startButton.translatesAutoresizingMaskIntoConstraints = false
         return startButton
     }()
-
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         layout()
     }
-
+    
+    // MARK: - Layout
+    
     func layout() {
         view.addSubview(backgroundView)
         view.addSubview(titleLabel)
         view.addSubview(startButton)
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 382),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 280),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
             titleLabel.heightAnchor.constraint(equalToConstant: 200),
-            
+    
             startButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 222),
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
             startButton.heightAnchor.constraint(equalToConstant: 48),
-            
         ])
     }
+    
+    // MARK: - Actions
     
     @objc func goToMainVC() {
         let maincViewController = MainViewController()

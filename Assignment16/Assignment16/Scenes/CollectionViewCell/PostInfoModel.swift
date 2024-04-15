@@ -21,9 +21,9 @@ class PostInfoModel {
 
 
 var posts: [PostInfoModel] = [
-    PostInfoModel(icon: UIImage(named: "Wizzard")!, title: "Beka ras gverchi?", description: "ახლა გავხსენი დავალება ეს რააარიიი"),
-    PostInfoModel(icon: UIImage(named: "Assassin")!, title: "რამე სიმღერა მირჩიეთ ", description: "დავალების კეთებისას ღამე ძაან მეძინება,ყავამ არ მიშველა"),
-    PostInfoModel(icon: UIImage(named: "Warrior")!, title: "ფიგმამ თქვენც დაგტანჯათ? ", description: "შევწუხდი დაბალი ხარისხით იწერს ყველას"),
-    PostInfoModel(icon: UIImage(named: "Archer")!, title: "მეტი ბედინა გვინდა ", description: "შევწუხდით ნუ, აღარ გვინდა ამდენი ტეილორ Swift-ი"),
-    PostInfoModel(icon: UIImage(named: "Archer")!, title: "მეტი ბედინა გვინდა ", description: "შევწუხდით ნუ, აღარ გვინდა ამდენი ტეილორ Swift-ი"),
+    PostInfoModel(icon: UIImage(named: "Wizzard")!, title: "Alden Spellbrook", description: "თეთრი გღზელი წვერი, ლურჯი მოსასხამი"),
+    PostInfoModel(icon: UIImage(named: "Assassin")!, title: "Ezio Auditore", description: "თეთრი ტანსაცმელი"),
+    PostInfoModel(icon: UIImage(named: "Warrior")!, title: "Thorfinn", description: "ქერა, მოკლე თმა, ორი დანა"),
+    PostInfoModel(icon: UIImage(named: "Archer")!, title: "Fred Bear", description: "მწვანე მოსასხმარი, წითელი ფეხსაცმელი"),
+    PostInfoModel(icon: UIImage(named: "Archer")!, title: "Jack Cherchil", description: "ყავისფერი ზედა, ლურჯი შარვალი"),
 ]

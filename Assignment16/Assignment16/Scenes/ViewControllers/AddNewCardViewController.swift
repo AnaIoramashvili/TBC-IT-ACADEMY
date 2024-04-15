@@ -8,8 +8,13 @@ import UIKit
 
 class AddNewCardViewController: UIViewController {
     
+    // MARK: - Properties
+
     var delegate: ReceiveDataDelegate?
+    var imageSelected: String = ""
     
+    // MARK: - Views
+
     lazy var backgroundView: UIImageView = {
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "DefaultBackground")
@@ -40,6 +45,7 @@ class AddNewCardViewController: UIViewController {
         textField1.layer.borderColor = UIColor.white.cgColor
         textField1.layer.borderWidth = 1.0
         textField1.backgroundColor = .clear
+        textField1.textColor = .white
         textField1.translatesAutoresizingMaskIntoConstraints = false
         
         let paragraphStyle = NSMutableParagraphStyle()
@@ -68,6 +74,7 @@ class AddNewCardViewController: UIViewController {
         textField2.font = UIFont(name: "FiraGO-Regular", size: 12)
         textField2.layer.borderColor = UIColor.white.cgColor
         textField2.layer.borderWidth = 1.0
+        textField2.textColor = .white
         textField2.backgroundColor = .clear
         textField2.translatesAutoresizingMaskIntoConstraints = false
         
@@ -143,13 +150,14 @@ class AddNewCardViewController: UIViewController {
         addButton.translatesAutoresizingMaskIntoConstraints = false
         return addButton
     }()
-    
-    //ცვლადი,რომელიც დაიმახსოვრებს იმ იმიჯის სახელს, რომელსაც მერე გამოვიყენებთ და დავამატებთ პოსტში
-    var imageSelected: String = ""
-    
+        
     override func viewDidLoad() {
+        navigationController?.navigationBar.isHidden = true
         layout()
     }
+
+    
+    // MARK: - Layout
 
     func layout() {
         view.addSubview(backgroundView)
@@ -172,17 +180,17 @@ class AddNewCardViewController: UIViewController {
         textField2.layer.cornerRadius = 8
         
         NSLayoutConstraint.activate([
-            stackView1.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            stackView1.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 47),
             stackView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stackView1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             textField1.heightAnchor.constraint(equalToConstant: 45),
             textField2.heightAnchor.constraint(equalToConstant: 45),
             
-            selectIconLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 320),
+            selectIconLabel.topAnchor.constraint(equalTo: stackView1.bottomAnchor, constant: 29),
             selectIconLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             
-            stackView2.topAnchor.constraint(equalTo: view.topAnchor, constant: 370),
+            stackView2.topAnchor.constraint(equalTo: selectIconLabel.bottomAnchor, constant: 14),
             stackView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 62),
             
             wizzardIconButton.heightAnchor.constraint(equalToConstant: 40),
@@ -194,15 +202,15 @@ class AddNewCardViewController: UIViewController {
             archerIconButton.heightAnchor.constraint(equalToConstant: 40),
             archerIconButton.widthAnchor.constraint(equalToConstant: 40),
             
-            addButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 664),
             addButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 121),
             addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -121),
+            addButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70),
             addButton.heightAnchor.constraint(equalToConstant: 48),
         ])
-        
     }
     
-    
+    // MARK: - Action
+
     @objc func addWizzardIconButton() {
         imageSelected = "Wizzard"
     }
@@ -224,5 +232,4 @@ class AddNewCardViewController: UIViewController {
         delegate?.receive(post: post)
         navigationController?.popViewController(animated: true)
     }
-    
 }
