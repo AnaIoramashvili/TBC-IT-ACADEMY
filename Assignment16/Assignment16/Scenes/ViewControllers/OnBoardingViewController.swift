@@ -44,7 +44,6 @@ class OnBoardingViewController: UIViewController {
         return startButton
     }()
 
-    
     override func viewDidLoad() {
         layout()
     }
@@ -59,8 +58,7 @@ class OnBoardingViewController: UIViewController {
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
             titleLabel.heightAnchor.constraint(equalToConstant: 200),
             
-            
-            startButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 664),
+            startButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
             startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 222),
             startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             startButton.heightAnchor.constraint(equalToConstant: 48),

@@ -16,6 +16,8 @@
 		594B61C52BCC125500EDC36E /* FiraGO-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 594B61C32BCC125500EDC36E /* FiraGO-Regular.ttf */; };
 		594B61C92BCC178A00EDC36E /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B61C82BCC178A00EDC36E /* OnBoardingViewController.swift */; };
 		594B61CB2BCC3E0300EDC36E /* AddNewCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B61CA2BCC3E0300EDC36E /* AddNewCardViewController.swift */; };
+		594B61D82BCD257100EDC36E /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B61D72BCD257100EDC36E /* CustomCell.swift */; };
+		594B61DB2BCD25DC00EDC36E /* PostInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B61DA2BCD25DC00EDC36E /* PostInfoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		594B61C32BCC125500EDC36E /* FiraGO-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FiraGO-Regular.ttf"; sourceTree = "<group>"; };
 		594B61C82BCC178A00EDC36E /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		594B61CA2BCC3E0300EDC36E /* AddNewCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardViewController.swift; sourceTree = "<group>"; };
+		594B61D72BCD257100EDC36E /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		594B61DA2BCD25DC00EDC36E /* PostInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostInfoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,8 +50,8 @@
 		594B61A22BCC0E2A00EDC36E = {
 			isa = PBXGroup;
 			children = (
-				594B61C72BCC15B200EDC36E /* Font */,
 				594B61AD2BCC0E2A00EDC36E /* Assignment16 */,
+				594B61C72BCC15B200EDC36E /* Font */,
 				594B61AC2BCC0E2A00EDC36E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,6 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				594B61D22BCC552B00EDC36E /* ViewControllers */,
+				594B61D62BCD216B00EDC36E /* CollectionViewCell */,
 				594B61D32BCC553A00EDC36E /* Launch */,
 			);
 			path = Scenes;
@@ -122,6 +127,15 @@
 				594B61B72BCC0E2B00EDC36E /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		594B61D62BCD216B00EDC36E /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				594B61D72BCD257100EDC36E /* CustomCell.swift */,
+				594B61DA2BCD25DC00EDC36E /* PostInfoModel.swift */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,10 +210,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				594B61DB2BCD25DC00EDC36E /* PostInfoModel.swift in Sources */,
 				594B61CB2BCC3E0300EDC36E /* AddNewCardViewController.swift in Sources */,
 				594B61B32BCC0E2A00EDC36E /* MainViewController.swift in Sources */,
 				594B61AF2BCC0E2A00EDC36E /* AppDelegate.swift in Sources */,
 				594B61B12BCC0E2A00EDC36E /* SceneDelegate.swift in Sources */,
+				594B61D82BCD257100EDC36E /* CustomCell.swift in Sources */,
 				594B61C92BCC178A00EDC36E /* OnBoardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

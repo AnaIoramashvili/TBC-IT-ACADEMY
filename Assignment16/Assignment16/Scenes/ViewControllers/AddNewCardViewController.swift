@@ -4,11 +4,11 @@
 //
 //  Created by Ana on 4/14/24.
 //
-
-import Foundation
 import UIKit
 
 class AddNewCardViewController: UIViewController {
+    
+    var delegate: ReceiveDataDelegate?
     
     lazy var backgroundView: UIImageView = {
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
@@ -98,34 +98,39 @@ class AddNewCardViewController: UIViewController {
         stackView2.translatesAutoresizingMaskIntoConstraints = false
         return stackView2
     }()
-    
-    lazy var wizzardIconImage: UIImageView = {
-        let wizzardIconImage = UIImageView()
-        wizzardIconImage.image = UIImage(named: "Wizzard")
-        wizzardIconImage.translatesAutoresizingMaskIntoConstraints = false
-        return wizzardIconImage
+
+    lazy var wizzardIconButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Wizzard"), for: .normal)
+        button.addTarget(self, action: #selector(addWizzardIconButton), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
-    
-    lazy var assassinIconImage: UIImageView = {
-        let assassinIconImage = UIImageView()
-        assassinIconImage.image = UIImage(named: "Assassin")
-        assassinIconImage.translatesAutoresizingMaskIntoConstraints = false
-        return assassinIconImage
+
+    lazy var assassinIconButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Assassin"), for: .normal)
+        button.addTarget(self, action: #selector(addAssassinIconButton), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
-    
-    lazy var warriorIconImage: UIImageView = {
-        let warriorIconImage = UIImageView()
-        warriorIconImage.image = UIImage(named: "Warrior")
-        warriorIconImage.translatesAutoresizingMaskIntoConstraints = false
-        return warriorIconImage
+
+    lazy var warriorIconButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Warrior"), for: .normal)
+        button.addTarget(self, action: #selector(addWarriorIconButton), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
-    
-    lazy var archerIconImage: UIImageView = {
-        let archerIconImage = UIImageView()
-        archerIconImage.image = UIImage(named: "Archer")
-        archerIconImage.translatesAutoresizingMaskIntoConstraints = false
-        return archerIconImage
+
+    lazy var archerIconButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "Archer"), for: .normal)
+        button.addTarget(self, action: #selector(addArcherIconButton), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
+
     
     lazy var addButton: UIButton = {
         let addButton = UIButton()
@@ -134,16 +139,18 @@ class AddNewCardViewController: UIViewController {
         addButton.setTitleColor(.white, for: .normal)
         addButton.titleLabel?.font = UIFont(name: "FiraGO-Bold", size: 14)
         addButton.backgroundColor = .systemGreen
-//        addButton.addTarget(self, action: #selector(addNewCard), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         addButton.translatesAutoresizingMaskIntoConstraints = false
         return addButton
     }()
     
+    //ცვლადი,რომელიც დაიმახსოვრებს იმ იმიჯის სახელს, რომელსაც მერე გამოვიყენებთ და დავამატებთ პოსტში
+    var imageSelected: String = ""
     
     override func viewDidLoad() {
         layout()
     }
-    
+
     func layout() {
         view.addSubview(backgroundView)
         view.addSubview(stackView1)
@@ -156,12 +163,11 @@ class AddNewCardViewController: UIViewController {
         stackView1.addArrangedSubview(titleLabel2)
         stackView1.addArrangedSubview(textField2)
         
-        stackView2.addArrangedSubview(wizzardIconImage)
-        stackView2.addArrangedSubview(assassinIconImage)
-        stackView2.addArrangedSubview(warriorIconImage)
-        stackView2.addArrangedSubview(archerIconImage)
-
-
+        stackView2.addArrangedSubview(wizzardIconButton)
+        stackView2.addArrangedSubview(assassinIconButton)
+        stackView2.addArrangedSubview(warriorIconButton)
+        stackView2.addArrangedSubview(archerIconButton)
+        
         textField1.layer.cornerRadius = 8
         textField2.layer.cornerRadius = 8
         
@@ -179,21 +185,44 @@ class AddNewCardViewController: UIViewController {
             stackView2.topAnchor.constraint(equalTo: view.topAnchor, constant: 370),
             stackView2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 62),
             
-            wizzardIconImage.heightAnchor.constraint(equalToConstant: 40),
-            wizzardIconImage.widthAnchor.constraint(equalToConstant: 40),
-            assassinIconImage.heightAnchor.constraint(equalToConstant: 40),
-            assassinIconImage.widthAnchor.constraint(equalToConstant: 40),
-            warriorIconImage.heightAnchor.constraint(equalToConstant: 40),
-            warriorIconImage.widthAnchor.constraint(equalToConstant: 40),
-            archerIconImage.heightAnchor.constraint(equalToConstant: 40),
-            archerIconImage.widthAnchor.constraint(equalToConstant: 40),
+            wizzardIconButton.heightAnchor.constraint(equalToConstant: 40),
+            wizzardIconButton.widthAnchor.constraint(equalToConstant: 40),
+            assassinIconButton.heightAnchor.constraint(equalToConstant: 40),
+            assassinIconButton.widthAnchor.constraint(equalToConstant: 40),
+            warriorIconButton.heightAnchor.constraint(equalToConstant: 40),
+            warriorIconButton.widthAnchor.constraint(equalToConstant: 40),
+            archerIconButton.heightAnchor.constraint(equalToConstant: 40),
+            archerIconButton.widthAnchor.constraint(equalToConstant: 40),
             
             addButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 664),
             addButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 121),
             addButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -121),
             addButton.heightAnchor.constraint(equalToConstant: 48),
-
         ])
+        
+    }
+    
+    
+    @objc func addWizzardIconButton() {
+        imageSelected = "Wizzard"
+    }
+    
+    @objc func addAssassinIconButton(){
+        imageSelected = "Assassin"
+    }
+    
+    @objc func addWarriorIconButton(){
+        imageSelected = "Warrior"
+    }
+    
+    @objc func addArcherIconButton(){
+        imageSelected = "Archer"
+    }
+    
+    @objc func addButtonTapped() {
+        let post = PostInfoModel(icon: UIImage(named: imageSelected)!, title: textField1.text!, description: textField2.text!)
+        delegate?.receive(post: post)
+        navigationController?.popViewController(animated: true)
     }
     
 }
