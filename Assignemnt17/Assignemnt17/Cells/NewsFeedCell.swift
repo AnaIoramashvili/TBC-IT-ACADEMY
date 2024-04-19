@@ -41,7 +41,6 @@ class NewsFeedCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "macBook")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -83,7 +82,6 @@ class NewsFeedCell: UITableViewCell {
             backColorView.leadingAnchor.constraint(equalTo: newsImageView.leadingAnchor),
             backColorView.trailingAnchor.constraint(equalTo: newsImageView.trailingAnchor),
             backColorView.bottomAnchor.constraint(equalTo: newsImageView.bottomAnchor),
-
             
             newsImageView.topAnchor.constraint(equalTo: rectangleView.topAnchor),
             newsImageView.leadingAnchor.constraint(equalTo: rectangleView.leadingAnchor),
@@ -98,9 +96,6 @@ class NewsFeedCell: UITableViewCell {
             
             timeLabel.centerXAnchor.constraint(equalTo: backColorView.centerXAnchor),
             timeLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -5)
-
         ])
     }
-    
-    
 }

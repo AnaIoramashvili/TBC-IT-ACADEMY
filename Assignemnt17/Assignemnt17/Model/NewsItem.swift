@@ -12,7 +12,6 @@ struct NewsItem: Decodable {
     let time: String
     let photoUrl: String
 
-    
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case time = "Time"

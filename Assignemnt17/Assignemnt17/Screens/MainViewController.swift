@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class MainViewController: UIViewController {
     
     //MARK: - UI Components
@@ -44,6 +43,7 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    //MARK: - Setup Navigation Title
     func setNavigationTitle() {
         navigationItem.title = "Panicka News"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -83,7 +83,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =  tableView.dequeueReusableCell(withIdentifier: NewsFeedCell.identifier, for: indexPath) as? NewsFeedCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCell.identifier, for: indexPath) as? NewsFeedCell else {
             fatalError("Error")
         }
         
@@ -98,12 +98,22 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if let imageUrlString = rowData["PhotoUrl"] as? String, let imageUrl = URL(string: imageUrlString) {
-            if let imageData = try? Data(contentsOf: imageUrl) {
-                let image = UIImage(data: imageData)
-                cell.newsImageView.image = image
-                
-            }
+            
+            URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        cell.newsImageView.image = image
+                    }
+                }
+            }.resume()
         }
         return cell
+    }
+    
+    // MARK: - Table View Delegate
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let detailVC = DetailViewController()
+            detailVC.selectedNewsItem = newsData[indexPath.row]
+            navigationController?.pushViewController(detailVC, animated: true)
     }
 }
