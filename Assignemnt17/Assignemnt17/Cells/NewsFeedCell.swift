@@ -23,8 +23,8 @@ class NewsFeedCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.textColor = .black
-        label.numberOfLines = 0
+        label.textColor = .white
+        label.numberOfLines = 3
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -32,7 +32,7 @@ class NewsFeedCell: UITableViewCell {
     lazy var timeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .gray
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -41,8 +41,16 @@ class NewsFeedCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.image = UIImage(named: "macBook")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+    
+    lazy var backColorView: UIView = {
+        let backColorView = UIView()
+        backColorView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        backColorView.translatesAutoresizingMaskIntoConstraints = false
+        return backColorView
     }()
     
     
@@ -58,40 +66,41 @@ class NewsFeedCell: UITableViewCell {
     
     // MARK: - Setup UI
     private func setupUI() {
-        contentView.addSubview(rectangleView)
-        rectangleView.addSubview(titleLabel)
-        rectangleView.addSubview(timeLabel)
+        addSubview(rectangleView)
         rectangleView.addSubview(newsImageView)
-
+        newsImageView.addSubview(backColorView)
+        backColorView.addSubview(titleLabel)
+        backColorView.addSubview(timeLabel)
+        
         
         NSLayoutConstraint.activate([
-            rectangleView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            rectangleView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            rectangleView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            rectangleView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            rectangleView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            rectangleView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            rectangleView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            rectangleView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             
-            titleLabel.topAnchor.constraint(equalTo: newsImageView.bottomAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: rectangleView.leadingAnchor, constant: 8),
-            titleLabel.trailingAnchor.constraint(equalTo: rectangleView.trailingAnchor, constant: -8),
-            
-            timeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
-            timeLabel.leadingAnchor.constraint(equalTo: rectangleView.leadingAnchor, constant: 8),
-            timeLabel.trailingAnchor.constraint(equalTo: rectangleView.trailingAnchor, constant: -8),
-            timeLabel.bottomAnchor.constraint(equalTo: rectangleView.bottomAnchor, constant: -8),
+            backColorView.topAnchor.constraint(equalTo: newsImageView.topAnchor),
+            backColorView.leadingAnchor.constraint(equalTo: newsImageView.leadingAnchor),
+            backColorView.trailingAnchor.constraint(equalTo: newsImageView.trailingAnchor),
+            backColorView.bottomAnchor.constraint(equalTo: newsImageView.bottomAnchor),
+
             
             newsImageView.topAnchor.constraint(equalTo: rectangleView.topAnchor),
             newsImageView.leadingAnchor.constraint(equalTo: rectangleView.leadingAnchor),
             newsImageView.trailingAnchor.constraint(equalTo: rectangleView.trailingAnchor),
-//            newsImageView.heightAnchor.constraint(equalTo: rectangleView.heightAnchor, multiplier: 0.1),
-
+            newsImageView.bottomAnchor.constraint(equalTo: rectangleView.bottomAnchor),
+            newsImageView.heightAnchor.constraint(equalToConstant: 120),
+            
+            titleLabel.centerXAnchor.constraint(equalTo: backColorView.centerXAnchor),
+            titleLabel.centerYAnchor.constraint(equalTo: backColorView.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: backColorView.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: backColorView.trailingAnchor, constant: -16),
+            
+            timeLabel.centerXAnchor.constraint(equalTo: backColorView.centerXAnchor),
+            timeLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -5)
 
         ])
     }
     
-    // MARK: - Configure Cell
-    func configure(with image: UIImage?, title: String, time: String) {
-        newsImageView.image = image
-        titleLabel.text = title
-        timeLabel.text = time
-    }
+    
 }

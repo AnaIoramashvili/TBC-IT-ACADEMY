@@ -98,15 +98,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if let imageUrlString = rowData["PhotoUrl"] as? String, let imageUrl = URL(string: imageUrlString) {
-            // Fetch image data synchronously from the URL
             if let imageData = try? Data(contentsOf: imageUrl) {
-                // Create UIImage from the fetched data
                 let image = UIImage(data: imageData)
-                // Set the image to the image view
-                cell.imageView?.image = image
+                cell.newsImageView.image = image
+                
             }
         }
-        
         return cell
     }
 }
