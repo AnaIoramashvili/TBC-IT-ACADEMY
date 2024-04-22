@@ -16,8 +16,13 @@ class MainViewController: UIViewController {
     private var descriptionLabel = [String]()
     private var regionLabel = [String]()
     private var capitalLabel = [String]()
+    private var currencyLabel = [String]()
+    private var officialNameLabel = [String]()
+    private var googleMapsLinks = [String]()
+    private var openStreetMapsLinks = [String]()
     
     // MARK: - UI Components
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
@@ -29,14 +34,20 @@ class MainViewController: UIViewController {
     }()
     
     // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setNavigationTitle()
         fetchCountries()
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = "" 
+        navigationItem.backBarButtonItem = backButton
     }
     
     // MARK: - UI Setup
+    
     private func setupUI() {
         view.addSubview(tableView)
         tableView.separatorStyle = .none
@@ -58,6 +69,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Fetching API
+    
     private func fetchCountries() {
         guard let countriesURL = URL(string: "https://restcountries.com/v3.1/all") else {
             return
@@ -90,12 +102,32 @@ class MainViewController: UIViewController {
                 let capital = jsonArray.compactMap { $0["capital"] as? [String] }
                     .compactMap { $0.first }
                 
+                let currency = jsonArray.compactMap { dictionary -> String? in
+                  guard let currencies = dictionary["currencies"] as? [String: Any] else { return nil }
+                  return currencies.keys.first
+                }
+                
+                let officialNames = jsonArray.compactMap { $0["name"] as? [String: Any] }
+                    .compactMap { $0["official"] as? String }
+                
+                
+                let googleMapsLinks = jsonArray.compactMap { $0["maps"] as? [String: Any] }
+                    .compactMap { $0["googleMaps"] as? String }
+                
+                
+                let openStreetMapsLinks = jsonArray.compactMap { $0["maps"] as? [String: Any] }
+                    .compactMap { $0["openStreetMaps"] as? String }
+                
                 DispatchQueue.main.async {
                     self.countryNames = countries
                     self.countryFlags = flags
                     self.descriptionLabel = description
                     self.regionLabel = region
                     self.capitalLabel = capital
+                    self.currencyLabel = currency
+                    self.officialNameLabel = officialNames
+                    self.googleMapsLinks = googleMapsLinks
+                    self.openStreetMapsLinks = openStreetMapsLinks
                     self.tableView.reloadData()
                 }
             } catch {
@@ -135,8 +167,26 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - Table View Delegate
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
+        
+        if indexPath.row < countryNames.count {
+            let countryName = countryNames[indexPath.row]
+            detailVC.navigationItem.title = countryName
+            self.navigationItem.largeTitleDisplayMode = .never
+
+            
+        }
+        
+        if indexPath.row < googleMapsLinks.count {
+            detailVC.googleMapsLink = googleMapsLinks[indexPath.row]
+        }
+        
+        if indexPath.row < openStreetMapsLinks.count {
+            detailVC.openStreetMapsLink = openStreetMapsLinks[indexPath.row]
+        }
+        
         if let flagURL = URL(string: countryFlags[indexPath.row]) {
             let task = URLSession.shared.dataTask(with: flagURL) { data, response, error in
                 guard let data = data, let flagImage = UIImage(data: data) else { return }
@@ -145,6 +195,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                     detailVC.flagDescription = self.descriptionLabel[indexPath.row]
                     detailVC.blankLabel5.text = self.regionLabel[indexPath.row]
                     detailVC.blankLabel3.text = self.capitalLabel[indexPath.row]
+                    detailVC.blankLabel4.text = self.currencyLabel[indexPath.row]
+                    detailVC.blankLabel1.text = self.officialNameLabel[indexPath.row]
                     self.navigationController?.pushViewController(detailVC, animated: true)
                 }
             }
