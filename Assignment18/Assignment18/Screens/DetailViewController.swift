@@ -15,7 +15,6 @@ class DetailViewController: UIViewController {
     var regionName: String?
     var capitalName: String?
     var currencySymbol: String?
-    var unMember: String?
     var officialName: String?
     var googleMapsLink: String?
     var openStreetMapsLink: String?
@@ -154,8 +153,6 @@ class DetailViewController: UIViewController {
         return label
     }()
 
-
-    
     lazy var line2View: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
@@ -174,7 +171,7 @@ class DetailViewController: UIViewController {
     
     lazy var circle1button: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "image1"), for: .normal)
+        button.setImage(UIImage(named: "OpenStreetMaps"), for: .normal)
         button.addTarget(self, action: #selector(openOpenStreetMaps), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -182,16 +179,21 @@ class DetailViewController: UIViewController {
 
     lazy var circle2button: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "image2"), for: .normal)
+        button.setImage(UIImage(named: "GoogleMaps"), for: .normal)
         button.addTarget(self, action: #selector(openGoogleMaps), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        configureContent()
+        addConstraints()
+    }
+    
+    // MARK: - Setup UI
+    private func setupUI() {
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -213,8 +215,11 @@ class DetailViewController: UIViewController {
         contentView.addSubview(linksLabel)
         contentView.addSubview(circle1button)
         contentView.addSubview(circle2button)
+    }
+    
+    // MARK: - Configure Content
 
-        
+    private func configureContent() {
         if let flagImage = flagImage {
             flagImageView.image = flagImage
         }
@@ -246,7 +251,12 @@ class DetailViewController: UIViewController {
         if openStreetMapsLink != nil {
             circle2button.addTarget(self, action: #selector(openOpenStreetMaps), for: .touchUpInside)
         }
-        
+
+    }
+    
+    // MARK: - Add Constraints
+
+    private func addConstraints() {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
