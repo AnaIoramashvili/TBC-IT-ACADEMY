@@ -14,6 +14,8 @@ class MainViewController: UIViewController {
     private var countryNames = [String]()
     private var countryFlags = [String]()
     private var descriptionLabel = [String]()
+    private var regionLabel = [String]()
+    private var capitalLabel = [String]()
     
     // MARK: - UI Components
     lazy var tableView: UITableView = {
@@ -82,11 +84,18 @@ class MainViewController: UIViewController {
                 
                 let description = jsonArray.compactMap { $0["flags"] as? [String: Any] }
                     .compactMap { $0["alt"] as? String }
-                                
+                
+                let region = jsonArray.compactMap { $0["region"] as? String }
+                    
+                let capital = jsonArray.compactMap { $0["capital"] as? [String] }
+                    .compactMap { $0.first }
+                
                 DispatchQueue.main.async {
                     self.countryNames = countries
                     self.countryFlags = flags
                     self.descriptionLabel = description
+                    self.regionLabel = region
+                    self.capitalLabel = capital
                     self.tableView.reloadData()
                 }
             } catch {
@@ -133,6 +142,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let data = data, let flagImage = UIImage(data: data) else { return }
                 DispatchQueue.main.async {
                     detailVC.flagImage = flagImage
+                    detailVC.flagDescription = self.descriptionLabel[indexPath.row]
+                    detailVC.blankLabel5.text = self.regionLabel[indexPath.row]
+                    detailVC.blankLabel3.text = self.capitalLabel[indexPath.row]
                     self.navigationController?.pushViewController(detailVC, animated: true)
                 }
             }

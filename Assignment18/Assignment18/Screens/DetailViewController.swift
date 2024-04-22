@@ -11,6 +11,8 @@ class DetailViewController: UIViewController {
     
     var flagImage: UIImage?
     var flagDescription: String?
+    var regionName: String?
+    var capitalName: String?
     
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -61,9 +63,121 @@ class DetailViewController: UIViewController {
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.numberOfLines = 0
+        label.numberOfLines = 15
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
+        return label
+    }()
+    
+    lazy var lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    lazy var basicInformationLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Basic information:"
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var nativeNameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "Native Name:"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var spellingLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "Spelling:"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var capitalLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "Capital:"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var currencyLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "Currency:"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var regionLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "Region:"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var neighborsLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.text = "Neighbors:"
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var blankLabel1: UILabel = {
+        let label = UILabel()
+        label.text = "1"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var blankLabel2: UILabel = {
+        let label = UILabel()
+        label.text = "1"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var blankLabel3: UILabel = {
+        let label = UILabel()
+        label.text = "1"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var blankLabel4: UILabel = {
+        let label = UILabel()
+        label.text = "1"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var blankLabel5: UILabel = {
+        let label = UILabel()
+        label.text = "1"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    lazy var blankLabel6: UILabel = {
+        let label = UILabel()
+        label.text = "1"
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
@@ -78,6 +192,20 @@ class DetailViewController: UIViewController {
         flagImageContainer.addSubview(flagImageView)
         contentView.addSubview(aboutFlagLabel)
         contentView.addSubview(descriptionLabel)
+        contentView.addSubview(lineView)
+        contentView.addSubview(basicInformationLabel)
+        contentView.addSubview(nativeNameLabel)
+        contentView.addSubview(spellingLabel)
+        contentView.addSubview(capitalLabel)
+        contentView.addSubview(currencyLabel)
+        contentView.addSubview(regionLabel)
+        contentView.addSubview(neighborsLabel)
+        contentView.addSubview(blankLabel1)
+        contentView.addSubview(blankLabel2)
+        contentView.addSubview(blankLabel3)
+        contentView.addSubview(blankLabel4)
+        contentView.addSubview(blankLabel5)
+        contentView.addSubview(blankLabel6)
         
         if let flagImage = flagImage {
             flagImageView.image = flagImage
@@ -85,43 +213,90 @@ class DetailViewController: UIViewController {
         
         if let flagDescription = flagDescription {
             descriptionLabel.text = flagDescription
-        } else {
-            descriptionLabel.text = "Description not available"
         }
         
+        if let regionName = regionName {
+            regionLabel.text = regionName
+        }
+        
+        if let capitalName = capitalName {
+            capitalLabel.text = capitalName
+        }
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
+
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -60),
             contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, multiplier: 1.1),
-            
+
             flagImageContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             flagImageContainer.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             flagImageContainer.widthAnchor.constraint(equalToConstant: 343),
             flagImageContainer.heightAnchor.constraint(equalToConstant: 228),
-                        
-            
+                    
+
             flagImageView.topAnchor.constraint(equalTo: flagImageContainer.topAnchor),
             flagImageView.leadingAnchor.constraint(equalTo: flagImageContainer.leadingAnchor),
             flagImageView.trailingAnchor.constraint(equalTo: flagImageContainer.trailingAnchor),
             flagImageView.bottomAnchor.constraint(equalTo: flagImageContainer.bottomAnchor),
-            
-            
-            aboutFlagLabel.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 10),
-            aboutFlagLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            
+
+
+            aboutFlagLabel.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 25),
+            aboutFlagLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+
             descriptionLabel.topAnchor.constraint(equalTo: aboutFlagLabel.bottomAnchor, constant: 8),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20)
-            
+
+            lineView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 20),
+            lineView.widthAnchor.constraint(equalToConstant: 312),
+            lineView.heightAnchor.constraint(equalToConstant: 1),
+
+            basicInformationLabel.topAnchor.constraint(equalTo: lineView.bottomAnchor, constant: 25),
+            basicInformationLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+
+            nativeNameLabel.topAnchor.constraint(equalTo: basicInformationLabel.bottomAnchor, constant: 8),
+            nativeNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+
+            spellingLabel.topAnchor.constraint(equalTo: nativeNameLabel.bottomAnchor, constant: 8),
+            spellingLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+
+            capitalLabel.topAnchor.constraint(equalTo: spellingLabel.bottomAnchor, constant: 8),
+            capitalLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+
+            currencyLabel.topAnchor.constraint(equalTo: capitalLabel.bottomAnchor, constant: 8),
+            currencyLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+
+            regionLabel.topAnchor.constraint(equalTo: currencyLabel.bottomAnchor, constant: 8),
+            regionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+
+            neighborsLabel.topAnchor.constraint(equalTo: regionLabel.bottomAnchor, constant: 8),
+            neighborsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
+
+            blankLabel1.topAnchor.constraint(equalTo: basicInformationLabel.bottomAnchor, constant: 8),
+            blankLabel1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+
+            blankLabel2.topAnchor.constraint(equalTo: nativeNameLabel.bottomAnchor, constant: 8),
+            blankLabel2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+
+            blankLabel3.topAnchor.constraint(equalTo: spellingLabel.bottomAnchor, constant: 8),
+            blankLabel3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+
+            blankLabel4.topAnchor.constraint(equalTo: capitalLabel.bottomAnchor, constant: 8),
+            blankLabel4.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+
+            blankLabel5.topAnchor.constraint(equalTo: currencyLabel.bottomAnchor, constant: 8),
+            blankLabel5.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+
+            blankLabel6.topAnchor.constraint(equalTo: regionLabel.bottomAnchor, constant: 8),
+            blankLabel6.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+
         ])
     }
 }
