@@ -175,8 +175,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             let countryName = countryNames[indexPath.row]
             detailVC.navigationItem.title = countryName
             self.navigationItem.largeTitleDisplayMode = .never
-
-            
         }
         
         if indexPath.row < googleMapsLinks.count {
