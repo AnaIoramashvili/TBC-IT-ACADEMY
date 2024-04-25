@@ -28,9 +28,13 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setNavigationTitle()
         fetchCountries()
-        setupSearchController()
+        setupSearchController() 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setNavigationTitle()
 
     }
     
@@ -111,6 +115,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table View Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let country = viewModel.countries[indexPath.row]
+        
         let detailViewModel = DetailViewModel(country: country)
         let detailVC = DetailViewController()
         detailVC.viewModel = detailViewModel

@@ -7,12 +7,11 @@
 
 import UIKit
 
-import UIKit
-
 class DetailViewModel {
     
     // MARK: - Properties
-    var flagImage: UIImage?
+    var flagImage: String?
+    var flagName: String?
     var flagDescription: String?
     var regionName: String?
     var capitalName: String?
@@ -23,12 +22,8 @@ class DetailViewModel {
     
     // MARK: - Initialization
     init(country: Country) {
-        if let flags = country.flags {
-            self.flagImage = UIImage(named: flags.png ?? "")
-        } else {
-            self.flagImage = nil
-        }
-
+        self.flagImage = country.flags?.png
+        self.flagName = country.name?.common
         self.flagDescription = country.flags?.alt
         self.regionName = country.region
         self.capitalName = country.capital?.first
@@ -40,7 +35,6 @@ class DetailViewModel {
         }
         
         self.officialName = country.name?.official
-        
         self.googleMapsLink = country.maps?.googleMaps
         self.openStreetMapsLink = country.maps?.openStreetMaps
     }

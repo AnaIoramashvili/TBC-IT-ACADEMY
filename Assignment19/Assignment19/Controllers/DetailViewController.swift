@@ -121,27 +121,29 @@ class DetailViewController: UIViewController {
     }()
 
 
-    lazy var blankLabel1: UILabel = {
+    lazy var regionNameBlankLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
 
-    lazy var blankLabel3: UILabel = {
+    lazy var capitalNameBlankLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    lazy var blankLabel4: UILabel = {
+    lazy var currencySymbolBlankLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    lazy var blankLabel5: UILabel = {
+    lazy var officialNameBlankLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 0
+        label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -183,6 +185,12 @@ class DetailViewController: UIViewController {
         setupUI()
         configureContent()
         addConstraints()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     // MARK: - Setup UI
@@ -199,10 +207,10 @@ class DetailViewController: UIViewController {
         contentView.addSubview(capitalLabel)
         contentView.addSubview(currencyLabel)
         contentView.addSubview(regionLabel)
-        contentView.addSubview(blankLabel1)
-        contentView.addSubview(blankLabel3)
-        contentView.addSubview(blankLabel4)
-        contentView.addSubview(blankLabel5)
+        contentView.addSubview(regionNameBlankLabel)
+        contentView.addSubview(capitalNameBlankLabel)
+        contentView.addSubview(currencySymbolBlankLabel)
+        contentView.addSubview(officialNameBlankLabel)
         contentView.addSubview(line2View)
         contentView.addSubview(linksLabel)
         contentView.addSubview(circle1button)
@@ -214,12 +222,14 @@ class DetailViewController: UIViewController {
     private func configureContent() {
         guard let viewModel = viewModel else { return }
         
-        flagImageView.image = viewModel.flagImage
+        flagImageView.loadImage(from: URL(string: viewModel.flagImage!)!)
+        title = viewModel.flagName
         descriptionLabel.text = viewModel.flagDescription
-        regionLabel.text = viewModel.regionName
-        capitalLabel.text = viewModel.capitalName
-        currencyLabel.text = viewModel.currencySymbol
-        officialNameLabel.text = viewModel.officialName
+        regionNameBlankLabel.text = viewModel.regionName
+        capitalNameBlankLabel.text = viewModel.capitalName
+        currencySymbolBlankLabel.text = viewModel.currencySymbol
+        officialNameBlankLabel.text = viewModel.officialName
+        
         
         if viewModel.openStreetMapsLink != nil {
             circle1button.addTarget(self, action: #selector(openOpenStreetMaps), for: .touchUpInside)
@@ -288,21 +298,22 @@ class DetailViewController: UIViewController {
              regionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
 
 
-             blankLabel1.topAnchor.constraint(equalTo: basicInformationLabel.bottomAnchor, constant: 8),
-             blankLabel1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+             regionNameBlankLabel.topAnchor.constraint(equalTo: basicInformationLabel.bottomAnchor, constant: 8),
+             regionNameBlankLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
 
 
-             blankLabel3.topAnchor.constraint(equalTo: officialNameLabel.bottomAnchor, constant: 8),
-             blankLabel3.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+             capitalNameBlankLabel.topAnchor.constraint(equalTo: officialNameLabel.bottomAnchor, constant: 8),
+             capitalNameBlankLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
 
-             blankLabel4.topAnchor.constraint(equalTo: capitalLabel.bottomAnchor, constant: 8),
-             blankLabel4.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+             currencySymbolBlankLabel.topAnchor.constraint(equalTo: capitalLabel.bottomAnchor, constant: 8),
+             currencySymbolBlankLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
 
-             blankLabel5.topAnchor.constraint(equalTo: currencyLabel.bottomAnchor, constant: 8),
-             blankLabel5.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+             officialNameBlankLabel.topAnchor.constraint(equalTo: currencyLabel.bottomAnchor, constant: 8),
+             officialNameBlankLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+             officialNameBlankLabel.widthAnchor.constraint(equalToConstant: 150),
 
              
-             line2View.topAnchor.constraint(equalTo: regionLabel.bottomAnchor, constant: 15),
+             line2View.topAnchor.constraint(equalTo: officialNameBlankLabel.bottomAnchor, constant: 15),
              line2View.widthAnchor.constraint(equalToConstant: 312),
              line2View.heightAnchor.constraint(equalToConstant: 1),
              line2View.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
@@ -332,4 +343,16 @@ class DetailViewController: UIViewController {
         viewModel?.openGoogleMaps()
     }
     
+}
+
+extension UIImageView {
+    func loadImage(from url: URL) {
+        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let data = data, error == nil, let image = UIImage(data: data) else { return }
+            
+            DispatchQueue.main.sync{
+                self?.image = image
+            }
+        }.resume()
+    }
 }
