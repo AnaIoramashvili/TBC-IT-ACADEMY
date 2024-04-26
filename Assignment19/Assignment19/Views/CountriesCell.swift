@@ -22,7 +22,8 @@ class CountriesCell: UITableViewCell {
         view.backgroundColor = .white
         view.layer.cornerRadius = 30
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.black.cgColor
+        view.backgroundColor = UIColor(named: "backgroundColor")
+        view.layer.borderColor = UIColor(named: "labelColor")?.cgColor
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -39,7 +40,7 @@ class CountriesCell: UITableViewCell {
     lazy var countryLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.textColor = .black
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -47,7 +48,7 @@ class CountriesCell: UITableViewCell {
     lazy var arrowSymbol: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "chevron.right")
-        imageView.tintColor = .black
+        imageView.tintColor = .label
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -91,6 +92,14 @@ class CountriesCell: UITableViewCell {
         ])
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        rectangleView.layer.cornerRadius = 30
+        rectangleView.layer.borderWidth = 1
+        rectangleView.clipsToBounds = true
+        rectangleView.layer.borderColor = UIColor(named: "labelColor")?.cgColor
+        }
+    
     // MARK: - Configure Cell
     
     private func configure() {
@@ -109,4 +118,5 @@ class CountriesCell: UITableViewCell {
             task.resume()
         }
     }
+
 }

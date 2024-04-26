@@ -10,10 +10,11 @@ import UIKit
 class MainViewController: UIViewController {
     // MARK: - Properties
     private var viewModel = MainViewModel()
-    private var searchController = UISearchController(searchResultsController: nil)
-
     
     // MARK: - UI Components
+    
+    private let searchController = UISearchController(searchResultsController: nil)
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
@@ -25,23 +26,28 @@ class MainViewController: UIViewController {
     }()
     
     // MARK: - LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         fetchCountries()
-        setupSearchController() 
+        setupSearchController()
+        updateSearchResults(for: searchController)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationTitle()
-
     }
     
     // MARK: - UI Setup
     private func setupUI() {
         view.addSubview(tableView)
+        view.backgroundColor = UIColor(named: "backgroundColor")
         tableView.separatorStyle = .none
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -49,9 +55,16 @@ class MainViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+    private func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Countries"
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        navigationItem.searchController = searchController
+        definesPresentationContext = false
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     private func setNavigationTitle() {
@@ -71,16 +84,6 @@ class MainViewController: UIViewController {
             }
         }
     }
-    
-    // MARK: - Search Controller Setup
-    private func setupSearchController() {
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search Countries"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-    }
-
 }
 
 // MARK: - Table View Data Source and Delegate
@@ -94,7 +97,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError("Error")
         }
         
-         let country = viewModel.countries[indexPath.row]
+        let inSearchMode = viewModel.inSearchMode(searchController)
+        let country = inSearchMode ? viewModel.filteredCountries[indexPath.row] : viewModel.countries[indexPath.row]
         cell.countryLabel.text = country.name?.common
             
         if let flagURL = URL(string: (country.flags?.png!)!) {
@@ -107,14 +111,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 }
                 task.resume()
             }
-        
-        
         return cell
     }
     
     // MARK: - Table View Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let country = viewModel.countries[indexPath.row]
+        let insearchMode = viewModel.inSearchMode(searchController)
+        let country = insearchMode ? viewModel.filteredCountries[indexPath.row] : viewModel.countries[indexPath.row]
         
         let detailViewModel = DetailViewModel(country: country)
         let detailVC = DetailViewController()
@@ -124,19 +127,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-// MARK: - UISearchResultsUpdating
+// MARK: - Search Controller Functions
 extension MainViewController: UISearchResultsUpdating {
+    
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchText = searchController.searchBar.text else { return }
-        
-        if searchText.isEmpty {
-            viewModel.filteredCountries = viewModel.countries
-        } else {
-            viewModel.filteredCountries = viewModel.countries.filter {
-                ($0.name?.common ?? "").localizedCaseInsensitiveContains(searchText)
-            }
-        }
+        viewModel.updateSearchResults(for: searchController.searchBar.text)
         
         tableView.reloadData()
     }
 }
+

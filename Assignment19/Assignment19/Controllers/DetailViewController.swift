@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     // MARK: - UI Components
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = .systemBackground
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsVerticalScrollIndicator = true
         scrollView.showsHorizontalScrollIndicator = false
@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
     
     lazy var contentView: UIView = {
         let contentView = UIView()
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = .systemBackground
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
@@ -52,7 +52,7 @@ class DetailViewController: UIViewController {
     lazy var aboutFlagLabel: UILabel = {
         let label = UILabel()
         label.text = "About the flag:"
-        label.textColor = .black
+        label.textColor = UIColor(named: "labelColor")
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -60,7 +60,7 @@ class DetailViewController: UIViewController {
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = UIColor(named: "labelColor")
         label.numberOfLines = 15
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 14)
@@ -77,7 +77,7 @@ class DetailViewController: UIViewController {
     lazy var basicInformationLabel: UILabel = {
         let label = UILabel()
         label.text = "Basic information:"
-        label.textColor = .black
+        label.textColor = .label
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -85,7 +85,7 @@ class DetailViewController: UIViewController {
     
     lazy var officialNameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .label
         label.text = "Official Name:"
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -95,7 +95,7 @@ class DetailViewController: UIViewController {
 
     lazy var capitalLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .label
         label.text = "Capital:"
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -104,7 +104,7 @@ class DetailViewController: UIViewController {
 
     lazy var currencyLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .label
         label.text = "Currency:"
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -113,7 +113,7 @@ class DetailViewController: UIViewController {
 
     lazy var regionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .label
         label.text = "Region:"
         label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -158,7 +158,7 @@ class DetailViewController: UIViewController {
     lazy var linksLabel: UILabel = {
         let label = UILabel()
         label.text = "Useful links:"
-        label.textColor = .black
+        label.textColor = .label
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -250,16 +250,15 @@ class DetailViewController: UIViewController {
              scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
              contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 16),
-             contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -16),
              contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-             contentView.widthAnchor.constraint(equalToConstant: 343),
-             contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor, multiplier: 2.2),
+             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -60),
+             contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+             contentView.heightAnchor.constraint(greaterThanOrEqualTo: scrollView.heightAnchor, multiplier: 1.1),
 
              flagImageContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
              flagImageContainer.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-             flagImageContainer.widthAnchor.constraint(equalToConstant: 300),
-             flagImageContainer.heightAnchor.constraint(equalToConstant: 200),
+             flagImageContainer.widthAnchor.constraint(equalToConstant: 343),
+             flagImageContainer.heightAnchor.constraint(equalToConstant: 228),
                      
 
              flagImageView.topAnchor.constraint(equalTo: flagImageContainer.topAnchor),
