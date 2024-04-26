@@ -7,12 +7,6 @@
 
 import UIKit
 
-//protocol DetailPageViewDelegate {
-//    func openOpenStreetMaps()
-//    func openGoogleMaps()
-//    
-//}
-
 class DetailPageView: UIView {
         
     // MARK: - UI Components
