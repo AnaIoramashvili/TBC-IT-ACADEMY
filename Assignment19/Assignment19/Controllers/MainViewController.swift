@@ -128,7 +128,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let detailVC = DetailViewController()
         detailVC.viewModel = detailViewModel
         detailVC.country = country
-        navigationController?.pushViewController(detailVC, animated: true)
+        navigationController?.pushViewController(detailVC, animated: false)
     }
 }
 
