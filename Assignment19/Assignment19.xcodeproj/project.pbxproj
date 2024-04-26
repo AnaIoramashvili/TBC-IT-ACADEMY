@@ -18,6 +18,7 @@
 		59DA51CE2BD991A900052001 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA51CD2BD991A900052001 /* DetailViewModel.swift */; };
 		59DA51D02BD991CE00052001 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA51CF2BD991CE00052001 /* DetailViewController.swift */; };
 		59DA51D22BD9923900052001 /* CountryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA51D12BD9923900052001 /* CountryCellViewModel.swift */; };
+		59DA51D72BDB2F3B00052001 /* DetailPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA51D62BDB2F3B00052001 /* DetailPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		59DA51CD2BD991A900052001 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		59DA51CF2BD991CE00052001 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		59DA51D12BD9923900052001 /* CountryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCellViewModel.swift; sourceTree = "<group>"; };
+		59DA51D62BDB2F3B00052001 /* DetailPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				59DA51C92BD98E4200052001 /* CountriesCell.swift */,
+				59DA51D62BDB2F3B00052001 /* DetailPageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59DA51D72BDB2F3B00052001 /* DetailPageView.swift in Sources */,
 				59DA51C52BD98D3400052001 /* Country.swift in Sources */,
 				59DA51B02BD984E700052001 /* MainViewController.swift in Sources */,
 				59DA51CE2BD991A900052001 /* DetailViewModel.swift in Sources */,

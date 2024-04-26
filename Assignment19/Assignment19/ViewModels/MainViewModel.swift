@@ -45,6 +45,7 @@ class MainViewModel {
     }
 }
     // MARK: - Search Functions
+
 extension MainViewModel {
     public func inSearchMode(_ searchController: UISearchController) -> Bool {
         let isActive = searchController.isActive

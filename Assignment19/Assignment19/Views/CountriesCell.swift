@@ -118,5 +118,4 @@ class CountriesCell: UITableViewCell {
             task.resume()
         }
     }
-
 }

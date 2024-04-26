@@ -9,6 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     // MARK: - Properties
+    
     private var viewModel = MainViewModel()
     
     // MARK: - UI Components
@@ -41,6 +42,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - UI Setup
+    
     private func setupUI() {
         view.addSubview(tableView)
         view.backgroundColor = UIColor(named: "backgroundColor")
@@ -77,6 +79,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Fetching API
+    
     private func fetchCountries() {
         viewModel.fetchCountries { [weak self] in
             DispatchQueue.main.async {
@@ -87,6 +90,7 @@ class MainViewController: UIViewController {
 }
 
 // MARK: - Table View Data Source and Delegate
+
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.countryCount
@@ -115,6 +119,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // MARK: - Table View Delegate
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let insearchMode = viewModel.inSearchMode(searchController)
         let country = insearchMode ? viewModel.filteredCountries[indexPath.row] : viewModel.countries[indexPath.row]
@@ -128,6 +133,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 // MARK: - Search Controller Functions
+
 extension MainViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
