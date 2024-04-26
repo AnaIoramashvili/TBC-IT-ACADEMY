@@ -19,6 +19,8 @@
 		59DA51D02BD991CE00052001 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA51CF2BD991CE00052001 /* DetailViewController.swift */; };
 		59DA51D22BD9923900052001 /* CountryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA51D12BD9923900052001 /* CountryCellViewModel.swift */; };
 		59DA51D72BDB2F3B00052001 /* DetailPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA51D62BDB2F3B00052001 /* DetailPageView.swift */; };
+		59DA51D92BDBFD6100052001 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA51D82BDBFD6100052001 /* LogInViewController.swift */; };
+		59DA51DB2BDC108400052001 /* LogInPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA51DA2BDC108400052001 /* LogInPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		59DA51CF2BD991CE00052001 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		59DA51D12BD9923900052001 /* CountryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCellViewModel.swift; sourceTree = "<group>"; };
 		59DA51D62BDB2F3B00052001 /* DetailPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageView.swift; sourceTree = "<group>"; };
+		59DA51D82BDBFD6100052001 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		59DA51DA2BDC108400052001 /* LogInPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 		59DA51C02BD9864100052001 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				59DA51D82BDBFD6100052001 /* LogInViewController.swift */,
 				59DA51AF2BD984E700052001 /* MainViewController.swift */,
 				59DA51CF2BD991CE00052001 /* DetailViewController.swift */,
 			);
@@ -120,6 +125,7 @@
 			children = (
 				59DA51C92BD98E4200052001 /* CountriesCell.swift */,
 				59DA51D62BDB2F3B00052001 /* DetailPageView.swift */,
+				59DA51DA2BDC108400052001 /* LogInPageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,8 +133,8 @@
 		59DA51D42BD9C3F400052001 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				59DA51B92BD984E900052001 /* Info.plist */,
 				59DA51B42BD984E900052001 /* Assets.xcassets */,
+				59DA51B92BD984E900052001 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -205,6 +211,8 @@
 			files = (
 				59DA51D72BDB2F3B00052001 /* DetailPageView.swift in Sources */,
 				59DA51C52BD98D3400052001 /* Country.swift in Sources */,
+				59DA51D92BDBFD6100052001 /* LogInViewController.swift in Sources */,
+				59DA51DB2BDC108400052001 /* LogInPageView.swift in Sources */,
 				59DA51B02BD984E700052001 /* MainViewController.swift in Sources */,
 				59DA51CE2BD991A900052001 /* DetailViewModel.swift in Sources */,
 				59DA51CA2BD98E4200052001 /* CountriesCell.swift in Sources */,
