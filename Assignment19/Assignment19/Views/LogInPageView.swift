@@ -9,14 +9,14 @@ import UIKit
 
 class LogInPageView: UIView {
     
-    private let imageButton: UIButton = {
+    public let imageButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "addProfilePicture"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private let stackView: UIStackView = {
+    public let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 8
@@ -25,7 +25,7 @@ class LogInPageView: UIView {
         return stackView
     }()
     
-    private let nameLabel: UILabel = {
+    public let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "მომხმარებლის სახელი"
         label.font = UIFont(name: "FiraGO", size: 11)
@@ -34,7 +34,7 @@ class LogInPageView: UIView {
         return label
     }()
     
-    private let nameTextField: UITextField = {
+    public let nameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "შეიყვანეთ მომხმარებლის სახელი"
         textField.font = UIFont.systemFont(ofSize: 11)
@@ -43,7 +43,7 @@ class LogInPageView: UIView {
         return textField
     }()
     
-    private let stackView2: UIStackView = {
+    public let stackView2: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 8
@@ -52,7 +52,7 @@ class LogInPageView: UIView {
         return stackView
     }()
     
-    private let passwordLabel: UILabel = {
+    public let passwordLabel: UILabel = {
         let label = UILabel()
         label.text = "პაროლი"
         label.font = UIFont(name: "FiraGO", size: 11)
@@ -61,7 +61,7 @@ class LogInPageView: UIView {
         return label
     }()
     
-    private let PasswordTextField: UITextField = {
+    public let PasswordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "შეიყვანეთ პაროლი"
         textField.font = UIFont.systemFont(ofSize: 11)
@@ -70,7 +70,7 @@ class LogInPageView: UIView {
         return textField
     }()
     
-    private let stackView3: UIStackView = {
+    public let stackView3: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 8
@@ -79,7 +79,7 @@ class LogInPageView: UIView {
         return stackView
     }()
     
-    private let repeatPasswordLabel: UILabel = {
+    public let repeatPasswordLabel: UILabel = {
         let label = UILabel()
         label.text = "გაიმეორეთ პაროლი"
         label.font = UIFont(name: "FiraGO", size: 11)
@@ -88,7 +88,7 @@ class LogInPageView: UIView {
         return label
     }()
     
-    private let repeatPasswordField: UITextField = {
+    public let repeatPasswordField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "განმეორებით შეიყვანეთ პაროლი"
         textField.font = UIFont.systemFont(ofSize: 11)
@@ -97,13 +97,13 @@ class LogInPageView: UIView {
         return textField
     }()
     
-    private let actionButton: UIButton = {
+    public let actionButton: UIButton = {
         let button = UIButton()
         button.setTitle("შესვლა", for: .normal)
         button.layer.cornerRadius = 20
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "FiraGO", size: 11)
-        button.backgroundColor = .systemGreen
+        button.backgroundColor = .systemBlue
 //        button.addTarget(LogInPageView.self, action: #selector(buttonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -178,3 +178,4 @@ class LogInPageView: UIView {
 //    @objc func buttonTapped() {
 //    }
 }
+
