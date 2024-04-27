@@ -9,8 +9,6 @@ import UIKit
 
 class LogInPageView: UIView {
     
-    // MARK: - Properties
-    
     private let imageButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setImage(UIImage(named: "addProfilePicture"), for: .normal)
@@ -18,16 +16,89 @@ class LogInPageView: UIView {
         return button
     }()
     
-    private let textFieldsStackView: UIStackView = {
+    private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 30
+        stackView.spacing = 8
+        stackView.distribution = .fillProportionally
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "მომხმარებლის სახელი"
+        label.font = UIFont(name: "FiraGO", size: 11)
+        label.textColor = UIColor(named: "labelColor")
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let nameTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "შეიყვანეთ მომხმარებლის სახელი"
+        textField.font = UIFont.systemFont(ofSize: 11)
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private let stackView2: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.distribution = .fillProportionally
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private let passwordLabel: UILabel = {
+        let label = UILabel()
+        label.text = "პაროლი"
+        label.font = UIFont(name: "FiraGO", size: 11)
+        label.textColor = UIColor(named: "labelColor")
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let PasswordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "შეიყვანეთ პაროლი"
+        textField.font = UIFont.systemFont(ofSize: 11)
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private let stackView3: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        stackView.distribution = .fillProportionally
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private let repeatPasswordLabel: UILabel = {
+        let label = UILabel()
+        label.text = "გაიმეორეთ პაროლი"
+        label.font = UIFont(name: "FiraGO", size: 11)
+        label.textColor = UIColor(named: "labelColor")
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let repeatPasswordField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "განმეორებით შეიყვანეთ პაროლი"
+        textField.font = UIFont.systemFont(ofSize: 11)
+        textField.borderStyle = .roundedRect
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
     private let actionButton: UIButton = {
-        let button = UIButton(type: .custom)
+        let button = UIButton()
         button.setTitle("შესვლა", for: .normal)
         button.layer.cornerRadius = 20
         button.setTitleColor(.white, for: .normal)
@@ -40,11 +111,8 @@ class LogInPageView: UIView {
         
     }()
     
-    // MARK: - Lifecycle
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .systemBackground
         setupViews()
     }
     
@@ -52,43 +120,32 @@ class LogInPageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - UI Setup
-    
     private func setupViews() {
+        backgroundColor = .systemBackground
         addSubview(imageButton)
-        addSubview(textFieldsStackView)
+        
+        addSubview(stackView)
+        stackView.addArrangedSubview(nameLabel)
+        stackView.addArrangedSubview(nameTextField)
+        
+        addSubview(stackView2)
+        stackView2.addArrangedSubview(passwordLabel)
+        stackView2.addArrangedSubview(PasswordTextField)
+        
+        addSubview(stackView3)
+        stackView3.addArrangedSubview(repeatPasswordLabel)
+        stackView3.addArrangedSubview(repeatPasswordField)
+        
         addSubview(actionButton)
-        
-        addTextFieldWithLabel(title: "მომხმარებლის სახელი", placeholder: "შეიყვანეთ მომხმარებლის სახელი")
-        addTextFieldWithLabel(title: "პაროლი", placeholder: "შეიყვანეთ პაროლი")
-        addTextFieldWithLabel(title: "გაიმეორეთ პაროლი", placeholder: "განმეორებით შეიყვანეთ პაროლი")
-        
         setupConstraints()
-    }
-    
-    private func addTextFieldWithLabel(title: String, placeholder: String) {
-        let label = UILabel()
-        label.text = title
-        label.font = UIFont(name: "FiraGO", size: 11)
-        label.adjustsFontForContentSizeCategory = false
-        label.textColor = .label
-        print("Label font: \(label.font?.fontName ?? "") - size \(label.font?.pointSize ?? 0)")
-
         
-        let textField = UITextField()
-        textField.placeholder = placeholder
-        textField.font = UIFont.systemFont(ofSize: 11)
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 22.5
-        textField.layer.masksToBounds = true
-        textField.backgroundColor = UIColor.systemGray5
-        textField.heightAnchor.constraint(equalToConstant: 45).isActive = true
-        
-        let stackView = UIStackView(arrangedSubviews: [label, textField])
-        stackView.axis = .vertical
-        stackView.spacing = 8
-        
-        textFieldsStackView.addArrangedSubview(stackView)
+        let textFields = [nameTextField, PasswordTextField, repeatPasswordField]
+        textFields.forEach { textField in
+            textField.layer.cornerRadius = 22.5
+            textField.layer.masksToBounds = true
+            textField.backgroundColor = UIColor.systemGray5
+            textField.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        }
     }
     
     private func setupConstraints() {
@@ -97,19 +154,26 @@ class LogInPageView: UIView {
             imageButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 121),
             imageButton.widthAnchor.constraint(equalToConstant: 132),
             imageButton.heightAnchor.constraint(equalToConstant: 132),
+
+            stackView.topAnchor.constraint(equalTo: imageButton.bottomAnchor, constant: 47),
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             
-            textFieldsStackView.topAnchor.constraint(equalTo: imageButton.bottomAnchor, constant: 47),
-            textFieldsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            textFieldsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
-            textFieldsStackView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -50),
+            stackView2.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 31),
+            stackView2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            stackView2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             
-            actionButton.topAnchor.constraint(equalTo: textFieldsStackView.bottomAnchor, constant: 50),
+            stackView3.topAnchor.constraint(equalTo: stackView2.bottomAnchor, constant: 31),
+            stackView3.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            stackView3.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            
+            
+            actionButton.topAnchor.constraint(equalTo: stackView3.bottomAnchor, constant: 50),
             actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             actionButton.heightAnchor.constraint(equalToConstant: 45),
             actionButton.widthAnchor.constraint(equalToConstant: 327),
         ])
     }
-
     
 //    @objc func buttonTapped() {
 //    }
