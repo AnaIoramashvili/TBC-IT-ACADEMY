@@ -9,9 +9,13 @@
 import UIKit
 
 class LogInViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    
+    // MARK: - Properties
 
     var logInView = LogInPageView()
     let viewModel = LogInViewModel()
+    
+    // MARK: - View Lifecycle
 
     override func loadView() {
         super.loadView()
@@ -27,6 +31,8 @@ class LogInViewController: UIViewController, UIImagePickerControllerDelegate & U
             self?.addImage()
         }), for: .touchUpInside)
     }
+    
+    // MARK: - Actions
 
     @objc func loginButtonTapped() {
         guard let username = logInView.nameTextField.text, !username.isEmpty else {
@@ -59,6 +65,8 @@ class LogInViewController: UIViewController, UIImagePickerControllerDelegate & U
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+    
+    // MARK: - Image Handling
 
     func addImage() {
         let imagePicker = UIImagePickerController()
@@ -88,6 +96,8 @@ class LogInViewController: UIViewController, UIImagePickerControllerDelegate & U
         return paths[0]
     }
 }
+
+// MARK: - LogInViewModelDelegate
 
 extension LogInViewController: LogInViewModelDelegate {
     func didSaveCredentials(success: Bool) {

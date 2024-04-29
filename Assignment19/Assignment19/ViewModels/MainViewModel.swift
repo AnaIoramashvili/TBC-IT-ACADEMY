@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class MainViewModel {
+    
     // MARK: - Properties
     var countries: [Country] = []
     var filteredCountries: [Country] = []
