@@ -8,6 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    
     // MARK: - Properties
     
     private var viewModel = MainViewModel()
@@ -30,19 +31,22 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationItem.hidesBackButton = true
         setupUI()
         fetchCountries()
         setupSearchController()
         updateSearchResults(for: searchController)
+        setAlert()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
+        setAlert()
+    }
+    
+    func setAlert() {
         if UserDefaults.standard.bool(forKey: "FirstLogin") {
             UserDefaults.standard.set(false, forKey: "FirstLogin")
+            
             let alert = UIAlertController(title: "მოგესალმებით!", message: "კეთილი იყოს თქვენი მობრძანება ჩემს აპლიკაციაში!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "მადლობა", style: .default, handler: nil))
             present(alert, animated: true, completion: nil)

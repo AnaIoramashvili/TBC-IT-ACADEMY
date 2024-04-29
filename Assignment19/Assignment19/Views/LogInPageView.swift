@@ -7,12 +7,6 @@
 
 import UIKit
 
-// MARK: - Protocol
-
-protocol LogInViewDelegate: AnyObject {
-//    func loginButtonTapped()
-}
-
 class LogInPageView: UIView {
     // MARK: - UI Components
     
@@ -117,8 +111,6 @@ class LogInPageView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
-    weak var delegate: LogInViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -157,8 +149,6 @@ class LogInPageView: UIView {
             textField.backgroundColor = UIColor.systemGray5
             textField.heightAnchor.constraint(equalToConstant: 45).isActive = true
         }
-        
-//        logInButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
     }
     
     // MARK: - Setup Constraints
@@ -188,14 +178,5 @@ class LogInPageView: UIView {
             logInButton.heightAnchor.constraint(equalToConstant: 45),
         ])
     }
-    
-//    private func setupActions() {
-//        logInButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
-//    }
-//
-//    @objc private func loginButtonPressed() {
-//        delegate?.loginButtonTapped()
-//    }
-    
 }
 
