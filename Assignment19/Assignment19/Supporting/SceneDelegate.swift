@@ -8,17 +8,23 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    
+ 
     var window: UIWindow?
     
-    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
+        guard let scene = (scene as? UIWindowScene) else { return }
         
-        window.rootViewController = UINavigationController(rootViewController: LogInViewController())
-        self.window = window
-        self.window?.makeKeyAndVisible()
+        window = UIWindow(windowScene: scene)
+        if KeychainService.retrieve(forKey: "username") != nil,
+           KeychainService.retrieve(forKey: "password") != nil {
+            let countriesVC = MainViewController()
+            let navigationController = UINavigationController(rootViewController: countriesVC)
+            window?.rootViewController = navigationController
+        } else {
+            let loginVC = LogInViewController()
+            let navigationController = UINavigationController(rootViewController: loginVC)
+            window?.rootViewController = navigationController
+        }
+        window?.makeKeyAndVisible()
     }
-    
 }

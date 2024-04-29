@@ -7,16 +7,26 @@
 
 import UIKit
 
+// MARK: - Protocol
+
+protocol LogInViewDelegate: AnyObject {
+//    func loginButtonTapped()
+}
+
 class LogInPageView: UIView {
+    // MARK: - UI Components
     
-    public let imageButton: UIButton = {
-        let button = UIButton(type: .custom)
+    let imageButton: UIButton = {
+        let button = UIButton()
         button.setImage(UIImage(named: "addProfilePicture"), for: .normal)
+        button.layer.cornerRadius = 66
+        button.clipsToBounds = true
+        button.isUserInteractionEnabled = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    public let stackView: UIStackView = {
+    let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 8
@@ -25,7 +35,7 @@ class LogInPageView: UIView {
         return stackView
     }()
     
-    public let nameLabel: UILabel = {
+    let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "მომხმარებლის სახელი"
         label.font = UIFont(name: "FiraGO", size: 11)
@@ -34,7 +44,7 @@ class LogInPageView: UIView {
         return label
     }()
     
-    public let nameTextField: UITextField = {
+    let nameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "შეიყვანეთ მომხმარებლის სახელი"
         textField.font = UIFont.systemFont(ofSize: 11)
@@ -43,7 +53,7 @@ class LogInPageView: UIView {
         return textField
     }()
     
-    public let stackView2: UIStackView = {
+    let stackView2: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 8
@@ -52,7 +62,7 @@ class LogInPageView: UIView {
         return stackView
     }()
     
-    public let passwordLabel: UILabel = {
+    let passwordLabel: UILabel = {
         let label = UILabel()
         label.text = "პაროლი"
         label.font = UIFont(name: "FiraGO", size: 11)
@@ -61,7 +71,7 @@ class LogInPageView: UIView {
         return label
     }()
     
-    public let PasswordTextField: UITextField = {
+    let PasswordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "შეიყვანეთ პაროლი"
         textField.font = UIFont.systemFont(ofSize: 11)
@@ -70,7 +80,7 @@ class LogInPageView: UIView {
         return textField
     }()
     
-    public let stackView3: UIStackView = {
+    let stackView3: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 8
@@ -79,7 +89,7 @@ class LogInPageView: UIView {
         return stackView
     }()
     
-    public let repeatPasswordLabel: UILabel = {
+    let repeatPasswordLabel: UILabel = {
         let label = UILabel()
         label.text = "გაიმეორეთ პაროლი"
         label.font = UIFont(name: "FiraGO", size: 11)
@@ -88,7 +98,7 @@ class LogInPageView: UIView {
         return label
     }()
     
-    public let repeatPasswordField: UITextField = {
+    let repeatPasswordField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "განმეორებით შეიყვანეთ პაროლი"
         textField.font = UIFont.systemFont(ofSize: 11)
@@ -97,19 +107,18 @@ class LogInPageView: UIView {
         return textField
     }()
     
-    public let actionButton: UIButton = {
+    let logInButton: UIButton = {
         let button = UIButton()
         button.setTitle("შესვლა", for: .normal)
         button.layer.cornerRadius = 20
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "FiraGO", size: 11)
         button.backgroundColor = .systemBlue
-//        button.addTarget(LogInPageView.self, action: #selector(buttonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
-        
-        
     }()
+
+    weak var delegate: LogInViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -120,6 +129,8 @@ class LogInPageView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup Views
+
     private func setupViews() {
         backgroundColor = .systemBackground
         addSubview(imageButton)
@@ -136,7 +147,7 @@ class LogInPageView: UIView {
         stackView3.addArrangedSubview(repeatPasswordLabel)
         stackView3.addArrangedSubview(repeatPasswordField)
         
-        addSubview(actionButton)
+        addSubview(logInButton)
         setupConstraints()
         
         let textFields = [nameTextField, PasswordTextField, repeatPasswordField]
@@ -146,15 +157,19 @@ class LogInPageView: UIView {
             textField.backgroundColor = UIColor.systemGray5
             textField.heightAnchor.constraint(equalToConstant: 45).isActive = true
         }
+        
+//        logInButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
     }
     
+    // MARK: - Setup Constraints
+
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            imageButton.topAnchor.constraint(equalTo: topAnchor, constant: 110),
+            imageButton.topAnchor.constraint(equalTo: topAnchor, constant: 80),
             imageButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 121),
-            imageButton.widthAnchor.constraint(equalToConstant: 132),
+            imageButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -121),
             imageButton.heightAnchor.constraint(equalToConstant: 132),
-
+            
             stackView.topAnchor.constraint(equalTo: imageButton.bottomAnchor, constant: 47),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
@@ -167,15 +182,20 @@ class LogInPageView: UIView {
             stackView3.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
             stackView3.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
             
-            
-            actionButton.topAnchor.constraint(equalTo: stackView3.bottomAnchor, constant: 50),
-            actionButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            actionButton.heightAnchor.constraint(equalToConstant: 45),
-            actionButton.widthAnchor.constraint(equalToConstant: 327),
+            logInButton.topAnchor.constraint(equalTo: stackView3.bottomAnchor, constant: 50),
+            logInButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+            logInButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            logInButton.heightAnchor.constraint(equalToConstant: 45),
         ])
     }
     
-//    @objc func buttonTapped() {
+//    private func setupActions() {
+//        logInButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
 //    }
+//
+//    @objc private func loginButtonPressed() {
+//        delegate?.loginButtonTapped()
+//    }
+    
 }
 

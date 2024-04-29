@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol LogInViewModelDelegate: AnyObject {
     func didSaveCredentials(success: Bool)
 }
@@ -25,4 +24,9 @@ class LogInViewModel {
             delegate?.didSaveCredentials(success: false)
         }
     }
+    
+    func validatePasswords(password: String, repeatPassword: String) -> Bool {
+        return password == repeatPassword
+    }
+    
 }

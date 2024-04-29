@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
         tableView.backgroundColor = .systemBackground
         tableView.allowsSelection = true
         tableView.frame = view.bounds
-        tableView.register(CountriesCell.self, forCellReuseIdentifier: CountriesCell.identifier)
+        tableView.register(CountriesTableViewCell.self, forCellReuseIdentifier: CountriesTableViewCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.navigationItem.hidesBackButton = true
         setupUI()
         fetchCountries()
         setupSearchController()
@@ -38,6 +39,14 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        if UserDefaults.standard.bool(forKey: "FirstLogin") {
+            UserDefaults.standard.set(false, forKey: "FirstLogin")
+            let alert = UIAlertController(title: "მოგესალმებით!", message: "კეთილი იყოს თქვენი მობრძანება ჩემს აპლიკაციაში!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "მადლობა", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
         setNavigationTitle()
     }
     
@@ -70,6 +79,7 @@ class MainViewController: UIViewController {
     }
     
     private func setNavigationTitle() {
+        navigationItem.hidesBackButton = true
         navigationItem.title = "Countries"
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -97,7 +107,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CountriesCell.identifier, for: indexPath) as? CountriesCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CountriesTableViewCell.identifier, for: indexPath) as? CountriesTableViewCell else {
             fatalError("Error")
         }
         

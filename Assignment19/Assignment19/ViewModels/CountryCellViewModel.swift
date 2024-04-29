@@ -5,7 +5,7 @@
 //  Created by Ana on 4/24/24.
 //
 
-import UIKit
+import Foundation
 
 class CountryCellViewModel {
     var countryName: String

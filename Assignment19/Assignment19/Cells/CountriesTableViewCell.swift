@@ -1,5 +1,5 @@
 //
-//  CountriesCell.swift
+//  CountriesTableViewCell.swift
 //  Assignment19
 //
 //  Created by Ana on 4/24/24.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class CountriesCell: UITableViewCell {
-    static let identifier = "CountriesCell"
+class CountriesTableViewCell: UITableViewCell {
+    static let identifier = "CountriesTableViewCell"
     
     var viewModel: CountryCellViewModel? {
         didSet {

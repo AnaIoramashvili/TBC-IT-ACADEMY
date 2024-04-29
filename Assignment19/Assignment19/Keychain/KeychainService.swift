@@ -19,13 +19,11 @@ class KeychainService {
                 kSecAttrAccount as String: key,
                 kSecValueData as String: data
             ]
- 
             SecItemDelete(query as CFDictionary)
             let status = SecItemAdd(query as CFDictionary, nil)
  
             return status == errSecSuccess
         }
- 
         return false
     }
  
@@ -54,11 +52,9 @@ class KeychainService {
             kSecAttrService as String: serviceName,
             kSecAttrAccount as String: key
         ]
- 
         let status = SecItemDelete(query as CFDictionary)
  
         return status == errSecSuccess
     }
-    
 }
  
