@@ -15,6 +15,7 @@
 		59E277F22BE292E700990035 /* CatFact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E277F12BE292E700990035 /* CatFact.swift */; };
 		59E277F52BE2A38400990035 /* CatFactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E277F42BE2A38400990035 /* CatFactCell.swift */; };
 		59E277F82BE3011B00990035 /* CatFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E277F72BE3011B00990035 /* CatFactsViewModel.swift */; };
+		59E277FB2BE39AD800990035 /* myNetworkPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 59E277FA2BE39AD800990035 /* myNetworkPackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59E277FB2BE39AD800990035 /* myNetworkPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +139,9 @@
 			dependencies = (
 			);
 			name = Assignment21;
+			packageProductDependencies = (
+				59E277FA2BE39AD800990035 /* myNetworkPackage */,
+			);
 			productName = Assignment21;
 			productReference = 59E277D32BE291C800990035 /* Assignment21.app */;
 			productType = "com.apple.product-type.application";
@@ -165,6 +170,9 @@
 				Base,
 			);
 			mainGroup = 59E277CA2BE291C800990035;
+			packageReferences = (
+				59E277F92BE39AD800990035 /* XCRemoteSwiftPackageReference "NetWorking-Package" */,
+			);
 			productRefGroup = 59E277D42BE291C800990035 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -402,6 +410,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		59E277F92BE39AD800990035 /* XCRemoteSwiftPackageReference "NetWorking-Package" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AnaIoramashvili/NetWorking-Package";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		59E277FA2BE39AD800990035 /* myNetworkPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59E277F92BE39AD800990035 /* XCRemoteSwiftPackageReference "NetWorking-Package" */;
+			productName = myNetworkPackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 59E277CB2BE291C800990035 /* Project object */;
 }

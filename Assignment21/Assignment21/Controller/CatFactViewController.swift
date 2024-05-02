@@ -10,7 +10,7 @@ import UIKit
 class CatFactViewController: UIViewController, UITableViewDelegate {
     private let viewModel = CatFactsViewModel()
     private var catFacts: [CatFact] = []
-
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
@@ -21,7 +21,7 @@ class CatFactViewController: UIViewController, UITableViewDelegate {
         tableView.register(CatFactCell.self, forCellReuseIdentifier: CatFactCell.identifier)
         return tableView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -34,14 +34,14 @@ class CatFactViewController: UIViewController, UITableViewDelegate {
         navigationItem.title = "Cat Facts"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
-
+    
     private func setupUI() {
         view.backgroundColor = .white
         view.addSubview(tableView)
-
+        
         tableView.delegate = self
         tableView.dataSource = self
-
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -49,13 +49,13 @@ class CatFactViewController: UIViewController, UITableViewDelegate {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
+    
     private func fetchFacts() {
         viewModel.fetchCatFacts { [weak self] result in
             switch result {
-            case .success(let facts):
+            case .success(let response):
                 DispatchQueue.main.async {
-                    self?.catFacts = facts
+                    self?.catFacts = response.data 
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
