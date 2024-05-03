@@ -8,7 +8,12 @@
 import Foundation
 import myNetworkPackage
 
-class CatFactsViewModel {
+
+protocol CatFactsViewModelProtocol {
+    func fetchCatFacts(completion: @escaping (Result<CatFactsResponse, Error>) -> Void)
+}
+
+class CatFactsViewModel: CatFactsViewModelProtocol {
     let networkService = NetworkService()
 
     func fetchCatFacts(completion: @escaping (Result<CatFactsResponse, Error>) -> Void) {
@@ -17,3 +22,5 @@ class CatFactsViewModel {
         }
     }
 }
+
+

@@ -16,6 +16,7 @@
 		59E277F52BE2A38400990035 /* CatFactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E277F42BE2A38400990035 /* CatFactCell.swift */; };
 		59E277F82BE3011B00990035 /* CatFactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E277F72BE3011B00990035 /* CatFactsViewModel.swift */; };
 		59E277FB2BE39AD800990035 /* myNetworkPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 59E277FA2BE39AD800990035 /* myNetworkPackage */; };
+		59E277FD2BE4FF5F00990035 /* CatFactViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E277FC2BE4FF5F00990035 /* CatFactViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		59E277F12BE292E700990035 /* CatFact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFact.swift; sourceTree = "<group>"; };
 		59E277F42BE2A38400990035 /* CatFactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactCell.swift; sourceTree = "<group>"; };
 		59E277F72BE3011B00990035 /* CatFactsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatFactsViewModel.swift; sourceTree = "<group>"; };
+		59E277FC2BE4FF5F00990035 /* CatFactViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatFactViewControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				59E277DA2BE291C800990035 /* CatFactViewController.swift */,
+				59E277FC2BE4FF5F00990035 /* CatFactViewControllerExtension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				59E277F82BE3011B00990035 /* CatFactsViewModel.swift in Sources */,
 				59E277D92BE291C800990035 /* SceneDelegate.swift in Sources */,
 				59E277F22BE292E700990035 /* CatFact.swift in Sources */,
+				59E277FD2BE4FF5F00990035 /* CatFactViewControllerExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

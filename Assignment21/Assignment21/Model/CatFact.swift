@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct CatFactsResponse: Codable {
+struct CatFactsResponse: Decodable {
     let data: [CatFact]
 }
 
-struct CatFact: Codable {
+struct CatFact: Decodable {
     let fact: String
     let length: Int
 }

@@ -14,7 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
 
-        let catFactViewController = CatFactViewController()
+        let viewModel = CatFactsViewModel()
+        let catFactViewController = CatFactViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: catFactViewController)
 
         window.rootViewController = navigationController
@@ -22,4 +23,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
     }
 }
+
 
