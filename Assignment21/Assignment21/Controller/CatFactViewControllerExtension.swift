@@ -25,3 +25,18 @@ extension CatFactViewController: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - View Model Delegate
+
+extension CatFactViewController: CatFactsViewModelDelegate {
+    func didFetchCatFacts(_ catFacts: [CatFact]) {
+        DispatchQueue.main.async {
+            self.catFacts = catFacts
+            self.tableView.reloadData()
+        }
+    }
+    
+    func didFailFetchingCatFacts(_ error: Error) {
+        print("Failed to fetch cat facts: \(error)")
+    }
+}

@@ -9,15 +9,12 @@ import UIKit
 
 class CatFactViewController: UIViewController, UITableViewDelegate {
     
-    private var viewModel: CatFactsViewModelProtocol
+    private var viewModel: CatFactsViewModel
     public var catFacts: [CatFact] = []
     
-    func setViewModel(_ viewModel: CatFactsViewModelProtocol) {
-        self.viewModel = viewModel
-    }
     // MARK: - Initialization
     
-    init(viewModel: CatFactsViewModelProtocol) {
+    init(viewModel: CatFactsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,7 +25,7 @@ class CatFactViewController: UIViewController, UITableViewDelegate {
     
     // MARK: - UI Components
 
-    private let tableView: UITableView = {
+    let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .systemBackground
         tableView.allowsSelection = true
@@ -45,6 +42,7 @@ class CatFactViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         setupUI()
         navigationTitle()
+        viewModel.delegate = self
         fetchFacts()
     }
     
@@ -75,17 +73,7 @@ class CatFactViewController: UIViewController, UITableViewDelegate {
     // MARK: - Fetch Facts Function
     
     private func fetchFacts() {
-        viewModel.fetchCatFacts { [weak self] result in
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    self?.catFacts = response.data
-                    self?.tableView.reloadData()
-                }
-            case .failure(let error):
-                print("Failed to fetch cat facts: \(error)")
-            }
-        }
+        viewModel.fetchCatFacts()
     }
 }
 
