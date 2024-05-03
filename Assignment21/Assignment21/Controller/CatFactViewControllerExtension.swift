@@ -7,7 +7,7 @@
 
 import UIKit
 
-// MARK: - UI TableView DataDource Extension
+// MARK: - UI TableView DataSource Extension
 
 extension CatFactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
