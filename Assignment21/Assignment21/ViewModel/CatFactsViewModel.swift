@@ -14,12 +14,11 @@ protocol CatFactsViewModelDelegate: AnyObject {
 }
 
 class CatFactsViewModel {
-    let networkService = NetworkService()
     weak var delegate: CatFactsViewModelDelegate?
     let urlString = "https://catfact.ninja/facts?max_length=100&limit=100"
     
     func fetchCatFacts() {
-        networkService.getData(urlString: urlString) { [weak self] (result: Result<CatFactsResponse, Error>) in
+        NetworkService().getData(urlString: urlString) { [weak self] (result: Result<CatFactsResponse, Error>) in
             switch result {
             case .success(let response):
                 self?.delegate?.didFetchCatFacts(response.data)
