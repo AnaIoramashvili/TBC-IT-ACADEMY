@@ -9,8 +9,9 @@ import UIKit
 
 final class MainPageViewController: UIViewController {
     
-    private var viewModel: MainPageViewModel
+    // MARK: - Properties
     
+    private var viewModel: MainPageViewModel
     var dataSource: UICollectionViewDiffableDataSource<Int, Photo>!
     var photos = [Photo]()
     
@@ -60,9 +61,13 @@ final class MainPageViewController: UIViewController {
         viewModel.fetchPhotos()
     }
     
+    // MARK: - Navigation Title
+    
     private func navigationTitle() {
         navigationItem.titleView = titleLabel
     }
+    
+    // MARK: - UI Setup
     
     private func setupUI() {
         view.addSubview(photosCollectionView)

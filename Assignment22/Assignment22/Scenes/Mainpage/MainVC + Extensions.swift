@@ -7,7 +7,10 @@
 
 import UIKit
 
+// MARK: - MainPageViewModelDelegate
+
 extension MainPageViewController: MainPageViewModelDelegate {
+    
     func didFetchPhotos(_ photos: [Photo]) {
         self.photos = photos
         var snapshot = NSDiffableDataSourceSnapshot<Int, Photo>()
@@ -21,14 +24,20 @@ extension MainPageViewController: MainPageViewModelDelegate {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension MainPageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let fullScreenViewController = FullScreenViewController(photos: photos, startIndex: indexPath.item)
+        let viewModel = FullScreenViewModel(photos: photos, startIndex: indexPath.item)
+        let fullScreenViewController = FullScreenViewController(viewModel: viewModel)
+        fullScreenViewController.data()
+        fullScreenViewController.applySnapshot()
+        fullScreenViewController.load()
         navigationController?.pushViewController(fullScreenViewController, animated: true)
     }
 }
 
-
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension MainPageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

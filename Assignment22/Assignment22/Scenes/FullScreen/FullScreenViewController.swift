@@ -5,13 +5,13 @@
 //  Created by Ana on 5/9/24.
 //
 
-
 import UIKit
 
 final class FullScreenViewController: UIViewController {
     
-    private var photos: [Photo]
-    private var startIndex: Int
+    // MARK: - Properties
+    
+    private var viewModel: FullScreenViewModel
     private var dataSource: UICollectionViewDiffableDataSource<Int, Photo>!
     
     private lazy var collectionView: UICollectionView = {
@@ -28,9 +28,10 @@ final class FullScreenViewController: UIViewController {
         return collectionView
     }()
     
-    init(photos: [Photo], startIndex: Int) {
-        self.photos = photos
-        self.startIndex = startIndex
+    // MARK: - Initialization
+    
+    init(viewModel: FullScreenViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,13 +39,16 @@ final class FullScreenViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupCollectionView()
-        createSnapshot()
-        collectionView.scrollToItem(at: IndexPath(item: startIndex, section: 0), at: .centeredHorizontally, animated: false)
+        applySnapshot()
     }
+    
+    // MARK: - Setup CollectionView
     
     func setupCollectionView() {
         collectionView.delegate = self
@@ -56,7 +60,32 @@ final class FullScreenViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-        
+    }
+    
+    // MARK: - Apply Snapshot
+    
+    func applySnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, Photo>()
+        snapshot.appendSections([0])
+        snapshot.appendItems(viewModel.photos)
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    // MARK: - Load
+    
+    func load() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2 ) { [weak self] in
+            guard let myIndex = self?.viewModel.startIndex else {
+                return
+            }
+            self?.collectionView.scrollToItem(at: IndexPath(row: myIndex, section: 0), at: .centeredHorizontally, animated: false)
+            self?.collectionView.isPagingEnabled = true
+        }
+    }
+    
+    // MARK: - Data
+    
+    func data() {
         dataSource = UICollectionViewDiffableDataSource<Int, Photo>(collectionView: collectionView) { collectionView, indexPath, photo in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FullScreenCell.identifier, for: indexPath) as? FullScreenCell else {
                 fatalError("Cell can not be created")
@@ -65,14 +94,9 @@ final class FullScreenViewController: UIViewController {
             return cell
         }
     }
-    
-    func createSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, Photo>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(photos)
-        dataSource.apply(snapshot, animatingDifferences: false)
-    }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension FullScreenViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

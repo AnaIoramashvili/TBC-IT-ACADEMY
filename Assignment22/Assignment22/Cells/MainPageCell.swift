@@ -9,6 +9,8 @@ import UIKit
 
 final class MainPageCell: UICollectionViewCell {
     
+    // MARK: - Properties
+    
     static let identifier = "MainPageCell"
     
     private let image: UIImageView = {
@@ -19,6 +21,8 @@ final class MainPageCell: UICollectionViewCell {
         return image
     }()
     
+    // MARK: - Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -27,6 +31,8 @@ final class MainPageCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - UI Setup
     
     private func setupUI() {
         contentView.addSubview(image)
@@ -39,6 +45,8 @@ final class MainPageCell: UICollectionViewCell {
         ])
     }
     
+    // MARK: - Configuration
+    
     func configure(with imageURL: URL?) {
         guard let imageURL = imageURL else {
             print("Image not found")
@@ -47,5 +55,3 @@ final class MainPageCell: UICollectionViewCell {
         image.setImage(with: imageURL)
     }
 }
-
-
