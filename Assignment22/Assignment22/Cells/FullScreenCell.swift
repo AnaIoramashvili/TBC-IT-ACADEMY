@@ -7,10 +7,11 @@
 
 import UIKit
 
-class FullScreenCell: UICollectionViewCell {
+final class FullScreenCell: UICollectionViewCell {
+    
     static let identifier = "FullScreenCell"
     
-    private let imageView: UIImageView = {
+    let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -38,7 +39,11 @@ class FullScreenCell: UICollectionViewCell {
         ])
     }
     
-    func configure(with imageURL: URL) {
+    func configure(with imageURL: URL?) {
+        guard let imageURL = imageURL else {
+            print("Image not found")
+            return
+        }
         imageView.setImage(with: imageURL)
     }
 }

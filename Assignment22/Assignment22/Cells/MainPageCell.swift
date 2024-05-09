@@ -8,6 +8,7 @@
 import UIKit
 
 final class MainPageCell: UICollectionViewCell {
+    
     static let identifier = "MainPageCell"
     
     private let image: UIImageView = {

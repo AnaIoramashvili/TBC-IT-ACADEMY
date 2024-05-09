@@ -7,14 +7,12 @@
 
 import Foundation
 
-
-class FullScreenViewModel {
-    var imageURL: URL?
-
-    // Initialize the view model with the selected image URL
-    init(imageURL: URL?) {
-        self.imageURL = imageURL
+final class FullScreenViewModel {
+    var photos: [Photo]
+    var startIndex: Int
+    
+    init(photos: [Photo], startIndex: Int) {
+        self.photos = photos
+        self.startIndex = startIndex
     }
-
-    // You can add more methods and properties here as needed
 }
