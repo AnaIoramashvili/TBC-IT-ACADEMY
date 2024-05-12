@@ -9,6 +9,8 @@ import UIKit
 
 final class MainPageViewController: UIViewController {
     
+    // MARK: - Properties
+    
     var selectedButton: UIButton?
     private var viewModel: MainPageViewModel
     
@@ -23,7 +25,6 @@ final class MainPageViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-
     // MARK: - UI Components
 
     lazy var coverImage: UIImageView = {
@@ -135,6 +136,8 @@ final class MainPageViewController: UIViewController {
     let heartImageView = UIButton.sfSymbolButton(systemName: "heart")
     
     
+    // MARK: - Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -142,6 +145,8 @@ final class MainPageViewController: UIViewController {
         viewModel.delegate = self
     }
     
+    // MARK: - SetUp UI
+
     private func setupUI() {
         view.backgroundColor = UIColor(white: 0.1, alpha: 1.0)
         
@@ -206,6 +211,8 @@ final class MainPageViewController: UIViewController {
         ])
     }
 }
+
+// MARK: - MainPageViewDelegate
 
 extension MainPageViewController: MainPageViewModelDelegate {
     func updatePlayPauseButton(isPlaying: Bool) {
