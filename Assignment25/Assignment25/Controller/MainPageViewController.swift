@@ -10,8 +10,22 @@ import UIKit
 final class MainPageViewController: UIViewController {
     
     var selectedButton: UIButton?
-    private var viewModel = MainPageViewModel()
+    private var viewModel: MainPageViewModel
     
+    // MARK: - Initialization
+    
+    init(viewModel: MainPageViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+
+    // MARK: - UI Components
+
     lazy var coverImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "Album Cover")

@@ -14,6 +14,7 @@
 		59315A7E2BEE641200CCEFA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59315A7C2BEE641200CCEFA3 /* LaunchScreen.storyboard */; };
 		59315A8B2BEEAF8800CCEFA3 /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59315A8A2BEEAF8800CCEFA3 /* UIExtensions.swift */; };
 		59315A8D2BEFAAD200CCEFA3 /* MainPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59315A8C2BEFAAD200CCEFA3 /* MainPageViewModel.swift */; };
+		59315A912BF14C3F00CCEFA3 /* ViewModelDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59315A902BF14C3F00CCEFA3 /* ViewModelDelegateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		59315A7F2BEE641200CCEFA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		59315A8A2BEEAF8800CCEFA3 /* UIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
 		59315A8C2BEFAAD200CCEFA3 /* MainPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewModel.swift; sourceTree = "<group>"; };
+		59315A902BF14C3F00CCEFA3 /* ViewModelDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelDelegateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			children = (
 				59315A752BEE641100CCEFA3 /* MainPageViewController.swift */,
 				59315A8A2BEEAF8800CCEFA3 /* UIExtensions.swift */,
+				59315A902BF14C3F00CCEFA3 /* ViewModelDelegateExtension.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				59315A8D2BEFAAD200CCEFA3 /* MainPageViewModel.swift in Sources */,
 				59315A742BEE641100CCEFA3 /* SceneDelegate.swift in Sources */,
 				59315A8B2BEEAF8800CCEFA3 /* UIExtensions.swift in Sources */,
+				59315A912BF14C3F00CCEFA3 /* ViewModelDelegateExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
