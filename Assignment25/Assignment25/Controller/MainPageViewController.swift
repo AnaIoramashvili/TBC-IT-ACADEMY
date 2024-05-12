@@ -7,9 +7,10 @@
 
 import UIKit
 
-class MainPageViewController: UIViewController {
+final class MainPageViewController: UIViewController {
     
     var selectedButton: UIButton?
+    private var viewModel = MainPageViewModel()
     
     lazy var coverImage: UIImageView = {
         let image = UIImageView()
@@ -120,21 +121,11 @@ class MainPageViewController: UIViewController {
     let heartImageView = UIButton.sfSymbolButton(systemName: "heart")
     
     
-    var isPlaying = false
-    var isFirstPlayTap = true
-    var progressTimer: Timer?
-    var progressValue: Float = 0.0
-    
-    func addButtonTapped() {
-        homeImageView.addTarget(self, action: #selector(tabBarButtonTapped(_:)), for: .touchUpInside)
-        musicImageView.addTarget(self, action: #selector(tabBarButtonTapped(_:)), for: .touchUpInside)
-        heartImageView.addTarget(self, action: #selector(tabBarButtonTapped(_:)), for: .touchUpInside)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         addButtonTapped()
+        viewModel.delegate = self
     }
     
     private func setupUI() {
@@ -163,17 +154,13 @@ class MainPageViewController: UIViewController {
         
         //es gadavitano sxvagan
         loadingImageView.isHidden = true
-        
         coverImage.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        
-        
         
         NSLayoutConstraint.activate([
             coverImage.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),
             coverImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
             coverImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
             coverImage.heightAnchor.constraint(equalToConstant: 300),
-            
             
             stackView.topAnchor.constraint(equalTo: coverImage.bottomAnchor, constant: 30),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -204,100 +191,77 @@ class MainPageViewController: UIViewController {
             tabBarStackView.centerXAnchor.constraint(equalTo: tabBarView.centerXAnchor)
         ])
     }
-    
-    @objc private func playPauseButtonTapped() {
-        isPlaying.toggle()
-        updatePlayPauseButton()
-        print(isPlaying)
-        if isPlaying {
-            handlePlay()
-        } else {
-            handlePause()
-        }
-    }
-    
-    private func updatePlayPauseButton() {
+}
+
+extension MainPageViewController: MainPageViewModelDelegate {
+    func updatePlayPauseButton(isPlaying: Bool) {
         let imageName = isPlaying ? "pause" : "play"
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 35, weight: .regular)
         let image = UIImage(systemName: imageName, withConfiguration: symbolConfiguration)
         playPauseButton.setImage(image, for: .normal)
     }
     
-    private func handlePlay() {
-        showLoadingAnimation()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.hideLoadingAnimation()
-            self.startProgressTimer()
-            self.showCoverImage()
-        }
+    func addButtonTapped() {
+        homeImageView.addTarget(self, action: #selector(tabBarButtonTapped(_:)), for: .touchUpInside)
+        musicImageView.addTarget(self, action: #selector(tabBarButtonTapped(_:)), for: .touchUpInside)
+        heartImageView.addTarget(self, action: #selector(tabBarButtonTapped(_:)), for: .touchUpInside)
     }
     
-    private func handlePause() {
-        stopProgressTimer()
-        shrinkCoverImage()
+    @objc private func playPauseButtonTapped() {
+        viewModel.playPauseButtonTapped()
     }
+
+     
+     private func selectTabBarButton(_ sender: UIButton) {
+         selectedButton = sender
+         UIView.animate(withDuration: 0.2) {
+             sender.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+             sender.tintColor = .systemBlue
+         }
+     }
+
     
-    @objc private func updateProgress() {
-        if progressValue >= 1.0 {
-            stopProgressTimer()
-            return
-        }
-        progressValue += 0.01
-        progressBar.setProgress(progressValue, animated: true)
-    }
-    
-    private func showLoadingAnimation() {
+    func showLoadingAnimation() {
         loadingImageView.isHidden = false
         UIView.animate(withDuration: 0.5, delay: 0, options: [.curveLinear, .repeat], animations: {
             self.loadingImageView.transform = self.loadingImageView.transform.rotated(by: .pi)
         }, completion: nil)
     }
     
-    private func hideLoadingAnimation() {
+    func hideLoadingAnimation() {
         loadingImageView.isHidden = true
     }
+
     
-    private func startProgressTimer() {
-        progressTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateProgress), userInfo: nil, repeats: true)
-    }
-    
-    private func stopProgressTimer() {
-        progressTimer?.invalidate()
-    }
-    
-    private func showCoverImage() {
+    func showCoverImage() {
         UIView.animate(withDuration: 1) {
             self.coverImage.transform = .identity
         }
     }
     
-    private func shrinkCoverImage() {
+    func shrinkCoverImage() {
         UIView.animate(withDuration: 0.5) {
             self.coverImage.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         }
     }
     
+    func setProgress(progressValue: Float, animated: Bool) {
+        progressBar.setProgress(progressValue, animated: true)
+    }
+    
     @objc func tabBarButtonTapped(_ sender: UIButton) {
-        guard sender != selectedButton else { return }
-        
-        deselectPreviousTabBarButton()
-        selectTabBarButton(sender)
-    }
-    
-    private func deselectPreviousTabBarButton() {
-        if let selectedButton = selectedButton {
-            UIView.animate(withDuration: 0.2) {
-                selectedButton.transform = .identity
-                selectedButton.tintColor = .systemGray
-            }
-        }
-    }
-    
-    private func selectTabBarButton(_ sender: UIButton) {
-        selectedButton = sender
-        UIView.animate(withDuration: 0.2) {
-            sender.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
-            sender.tintColor = .systemBlue
-        }
-    }
+         guard sender != selectedButton else { return }
+         
+         deselectPreviousTabBarButton()
+         selectTabBarButton(sender)
+     }
+     
+     private func deselectPreviousTabBarButton() {
+         if let selectedButton = selectedButton {
+             UIView.animate(withDuration: 0.2) {
+                 selectedButton.transform = .identity
+                 selectedButton.tintColor = .systemGray
+             }
+         }
+     }
 }

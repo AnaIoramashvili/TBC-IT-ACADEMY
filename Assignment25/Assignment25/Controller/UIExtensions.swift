@@ -1,12 +1,11 @@
 //
-//  Extension.swift
+//  UIExtensions.swift
 //  Assignment25
 //
 //  Created by Ana on 5/10/24.
 //
 
 import UIKit
-
 
 extension UIImageView {
     static func sfSymbolImageView(systemName: String, tintColor: UIColor = .white) -> UIImageView {
@@ -18,11 +17,9 @@ extension UIImageView {
             imageView.widthAnchor.constraint(equalToConstant: 25),
             imageView.heightAnchor.constraint(equalToConstant: 25)
         ])
-        
         return imageView
     }
 }
-
 
 extension UIButton {
 static func sfSymbolButton(systemName: String, tintColor: UIColor = .systemGray) -> UIButton {

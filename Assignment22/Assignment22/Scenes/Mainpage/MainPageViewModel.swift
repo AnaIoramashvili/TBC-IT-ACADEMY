@@ -15,7 +15,7 @@ protocol MainPageViewModelDelegate: AnyObject {
 
 final class MainPageViewModel {
     weak var delegate: MainPageViewModelDelegate?
-    var photos = [Photo]()
+//    var photos = [Photo]()
     
     let urlString = "https://api.unsplash.com/photos/?per_page=40&client_id=5GnBsOVc6oqM76DJW5_N0w0M_GcOardmpRJWUNogEdg"
     
