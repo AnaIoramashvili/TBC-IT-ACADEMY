@@ -14,6 +14,8 @@ final class FullScreenViewController: UIViewController {
     private var viewModel: FullScreenViewModel
     private var dataSource: UICollectionViewDiffableDataSource<Int, Photo>!
     
+    // MARK: - UI Component
+
     private lazy var collectionView: UICollectionView = {
         let collectionViewFlowLayout = UICollectionViewFlowLayout()
         collectionViewFlowLayout.scrollDirection = .horizontal
@@ -45,6 +47,7 @@ final class FullScreenViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupCollectionView()
+        data()
         applySnapshot()
     }
     
